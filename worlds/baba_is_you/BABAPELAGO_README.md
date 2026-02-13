@@ -29,3 +29,7 @@ NOTE: You may have a hard time generating with certain options due to the restri
 2. If prompted to select a folder, navigate to the folder containing Baba Is You.exe (Baba Is You.app on Mac, untested). Make sure you select the folder containing the .exe, and not the "Data" folder.
 3. Join the multiworld by entering the IP and port at the top, like how you would join with the normal text client. Enter your slot name and the password (leave blank if there is not a password).
 4. Launch the Baba Is You game, and open the Babapelago level pack. Be sure to use a different safe file for each multiworld. If you'd like to continue playing the same multiworld later, make sure you keep the save file and don't erase it.
+
+## BONUS
+
+Want to test levels with only access to certain items? Launch the Babapelago levelpack without connecting to an AP World, and press M. This will activate Manual mode, where you can enable/disable items in the built-in Items submenu in the bottom-left corner of the Pause menu. You can also use this menu in normal play to see your goal and what items you have unlocked.

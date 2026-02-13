@@ -1,0 +1,114 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+from BaseClasses import ItemClassification, Location
+
+from . import items
+from .levels import LEVEL_DATA
+
+if TYPE_CHECKING:
+    from .world import BabaIsYouWorld
+
+# Every location must have a unique integer ID associated with it.
+# We will have a lookup from location name to ID here that, in world.py, we will import and bind to the world class.
+# Even if a location doesn't exist on specific options, it must be present in this lookup.
+LOCATION_NAME_TO_ID = {}
+
+# Set up location ids
+locationID = 1
+for name in LEVEL_DATA:
+    data = LEVEL_DATA[name]
+
+    if data.get("map") != True:
+        # Add win location
+        locationName = data["name"] + ": Win"
+        LOCATION_NAME_TO_ID[locationName] = locationID
+        locationID += 1
+    else:
+        # Add clear and complete locations
+        if data.get("clearCount") != None:
+            locationName = data["name"] + ": Clear"
+            LOCATION_NAME_TO_ID[locationName] = locationID
+            locationID += 1
+        if data.get("completeCount") != None:
+            locationName = data["name"] + ": Complete"
+            LOCATION_NAME_TO_ID[locationName] = locationID
+            locationID += 1
+
+
+# Each Location instance must correctly report the "game" it belongs to.
+# To make this simple, it is common practice to subclass the basic Location class and override the "game" field.
+class BabaIsYouLocation(Location):
+    game = "Baba Is You"
+
+
+# Let's make one more helper method before we begin actually creating locations.
+# Later on in the code, we'll want specific subsections of LOCATION_NAME_TO_ID.
+# To reduce the chance of copy-paste errors writing something like {"Chest": LOCATION_NAME_TO_ID["Chest"]},
+# let's make a helper method that takes a list of location names and returns them as a dict with their IDs.
+# Note: There is a minor typing quirk here. Some functions want location addresses to be an "int | None",
+# so while our function here only ever returns dict[str, int], we annotate it as dict[str, int | None].
+def get_location_names_with_ids(location_names: list[str]) -> dict[str, int | None]:
+    return {location_name: LOCATION_NAME_TO_ID[location_name] for location_name in location_names}
+
+
+def create_all_locations(world: BabaIsYouWorld) -> None:
+    create_locations(world)
+    create_events(world)
+
+
+def create_locations(world: BabaIsYouWorld) -> None:
+    # Add each level's win, clears, completes, and bonuses as locations
+    for name in LEVEL_DATA:
+        data = LEVEL_DATA[name]
+        level = world.get_region(name)
+        loc_list = []
+        # Add win, clear, and complete locations
+        if data.get("map") != True:
+            locationName = data["name"] + ": Win"
+            loc_list.append(locationName)
+        else:
+            if data.get("clearCount") != None:
+                locationName = data["name"] + ": Clear"
+                loc_list.append(locationName)
+            if world.options.complete_checks and data.get("completeCount") != None:
+                locationName = data["name"] + ": Complete"
+                loc_list.append(locationName)
+
+        level_locations = get_location_names_with_ids(loc_list)
+        level.add_locations(level_locations, BabaIsYouLocation)
+
+
+def create_events(world: BabaIsYouWorld) -> None:
+    # Ending event
+    a_way_out = world.get_region("Map-Finale")
+    a_way_out.add_event(
+        "Ending", "goal_end", location_type=BabaIsYouLocation, item_type=items.BabaIsYouItem
+    )
+
+    """
+    # Reached ??? event
+    flower = world.get_region("???")
+    flower.add_event(
+        "??? Reached", "goal_flower", location_type=BabaIsYouLocation, item_type=items.BabaIsYouItem
+    )
+
+    # Reached Depths event
+    depths = world.get_region("Depths")
+    depths.add_event(
+        "Depths Reached", "goal_depths", location_type=BabaIsYouLocation, item_type=items.BabaIsYouItem
+    )
+
+    # Reached Meta event
+    meta = world.get_region("Meta")
+    meta.add_event(
+        "Meta Reached", "goal_meta", location_type=BabaIsYouLocation, item_type=items.BabaIsYouItem
+    )
+
+    # Done event
+    center = world.get_region("Center")
+    center.add_event(
+        "Done", "goal_done", location_type=BabaIsYouLocation, item_type=items.BabaIsYouItem
+    )
+    """

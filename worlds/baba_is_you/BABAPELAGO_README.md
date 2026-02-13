@@ -1,8 +1,8 @@
 # Setup Guide For Baba Is You AP
 
 ## You Will Need:
-- Baba Is You APWorld (available at the [releases]() page)
-- Babapelago Level Pack (also available at the [releases]() page)
+- Baba Is You APWorld (available at the [releases](https://github.com/EmilyEmmi/Babapelago/releases) page)
+- Babapelago Level Pack (also available at the [releases](https://github.com/EmilyEmmi/Babapelago/releases) page)
 - Copy of Baba Is You (obviously)
 - Latest version of Archipelago (available [here](https://github.com/ArchipelagoMW/Archipelago/releases))
 

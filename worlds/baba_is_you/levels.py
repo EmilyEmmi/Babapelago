@@ -83,7 +83,7 @@ LEVEL_DATA = {
             "Map-2": can_win,
             "Map-7": can_win,
         },
-        "winLogic": ("Baba", "Is", "You", "Lava", "Push", "Flag", "Win"),
+        "winLogic": ("Baba", "Is", "You", "Lava", "Push"),
     },
     "Map-6": {
         "name": "Off Limits",

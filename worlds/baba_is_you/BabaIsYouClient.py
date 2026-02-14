@@ -16,6 +16,7 @@ MULTI_ITEMS = ("Blossom Petal", "Blossom", "Bonus")
 def clean(text: str) -> str:
     text.replace("=", "")
     text.replace("$", "S")
+    text.replace("#", "")
     return text
 
 if __name__ == "__main__":

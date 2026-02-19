@@ -13,8 +13,8 @@ If you're unfamilar with Archipelago, I would recommend following the [Archipela
 1. Install the Baba Is You APWorld by double-clicking it, or by opening the Launcher and selecting "Install APWorld". This will also install the Baba Is You AP client.
 2. In the Launcher, select Generate Template Options to get template option files for all available games. Scroll down to find Baba Is You. Use this file to set up your options like any other game.
 3. Once you have the options ready, the host will need the .yaml file, as well as the Baba Is You APWorld if they don't have it already. The host will host a game like usual.
-4. Install the Babapelago level pack by extracting the contents of the zip file to Baba Is You's "worlds" folder, located in "Data". On Steam, you can find this by selecting the Gear icon for the game in the library, and selecting "Manage -> Browse local files." On Mac, you'll also need to right click Baba Is You.app and select "Show Contents". BUT YOU'RE NOT DONE YET!!!
-5. Make a copy of the folder in the "worlds" folder called "baba". This holds the levels in the base game. Rename the copy to "babapelago" (case sensitive), and you should be prompted to merge the folder. When asked if you want to replace files, say NO or SKIP. This is VERY important! If you overwrite the babapelago files, the mod will not work correctly.
+4. Navigate to Baba Is You's "worlds" folder, located in "Data". On Steam, you can find this by selecting the Gear icon for the game in the library, and selecting "Manage -> Browse local files." On Mac, you'll also need to right click Baba Is You.app and select "Show Contents". Once there, make a copy of the folder called "baba", which holds the levels in the base game. Rename the copy to "babapelago" (case sensitive).
+5. Finish installing the Babapelago level pack by extracting the contents of the "babapelago.zip" file to the worlds folder. This should ask if you'd like to replace files, and you MUST answer YES. This is VERY important! If you don't replace the files, the mod will not load.
 
 NOTE: You may have a hard time generating with certain options due to the restrictive nature of this game's logic. You can try:
 - Disabling world keys, enabling open map
@@ -29,6 +29,9 @@ NOTE: You may have a hard time generating with certain options due to the restri
 2. If prompted to select a folder, navigate to the folder containing Baba Is You.exe (Baba Is You.app on Mac, untested). Make sure you select the folder containing the .exe, and not the "Data" folder.
 3. Join the multiworld by entering the IP and port at the top, like how you would join with the normal text client. Enter your slot name and the password (leave blank if there is not a password).
 4. Launch the Baba Is You game, and open the Babapelago level pack. Be sure to use a different safe file for each multiworld. If you'd like to continue playing the same multiworld later, make sure you keep the save file and don't erase it.
+
+## Updating the levelpack
+When a new version releases, you don't need to go through the entire levelpack installation process again. Simply take the new files from babapelago.zip and replace the old files in your existing babapelago world folder.
 
 ## BONUS
 

@@ -108,8 +108,12 @@ def handle_level_shuffle(world: BabaIsYouWorld) -> None:
             else:
                 other_level_list.append(name)
     
+    # Reverse level list and starting list so they are in order
+    starting_level_list.reverse()
+    level_list.reverse()
+    
     # Shuffle clearable levels and use these for the starting levels
-    world.random.shuffle(starting_level_list)
+    world.random.shuffle(clearable_level_list)
     while len(starting_level_list) != 0 and len(clearable_level_list) != 0:
         world.level_shuffle_dict[starting_level_list.pop()] = clearable_level_list.pop()
     
@@ -123,6 +127,6 @@ def handle_level_shuffle(world: BabaIsYouWorld) -> None:
             level_list.append(starting_level_list.pop())
     
     # Shuffle remaining levels
-    world.random.shuffle(level_list)
+    world.random.shuffle(other_level_list)
     while len(level_list) != 0:
         world.level_shuffle_dict[level_list.pop()] = other_level_list.pop()

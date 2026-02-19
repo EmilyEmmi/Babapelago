@@ -184,7 +184,7 @@ class ThirdGateBlossoms(Range):
     range_end = 12
     default = 7
 
-class CompleteChecks(DefaultOnToggle):
+class CompleteChecks(Toggle):
     """
     Adds checks for completing a world (completing all levels within that world)
     """

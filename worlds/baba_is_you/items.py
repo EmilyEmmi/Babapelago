@@ -16,7 +16,7 @@ ITEM_NAME_TO_ID = {
     "Speck": 1,
     "Blossom Petal": 2,
     "Blossom": 3,
-    "Bonus": 4,
+    "Bonus Orb": 4,
     "Lake Key": 5,
     "Island Key": 6,
     "Ruins Key": 7,
@@ -36,7 +36,7 @@ DEFAULT_ITEM_CLASSIFICATIONS = {
     "Speck": ItemClassification.filler,
     "Blossom Petal": ItemClassification.progression,
     "Blossom": ItemClassification.progression,
-    "Bonus": ItemClassification.progression,
+    "Bonus Orb": ItemClassification.progression,
     "Lake Key": ItemClassification.progression,
     "Island Key": ItemClassification.progression,
     "Ruins Key": ItemClassification.progression,
@@ -83,7 +83,7 @@ def create_item_with_correct_classification(world: BabaIsYouWorld, name: str) ->
     classification = DEFAULT_ITEM_CLASSIFICATIONS[name]
 
     # Bonuses become filler items if we aren't including "Gallery"
-    if name == "Bonus" and (world.options.exclude_gallery):
+    if name == "Bonus Orb" and (world.options.exclude_gallery):
         classification = ItemClassification.filler
 
     return BabaIsYouItem(name, classification, ITEM_NAME_TO_ID[name], world.player)
@@ -102,7 +102,7 @@ def create_all_items(world: BabaIsYouWorld) -> None:
     # Create normal items based on selected options
     itempool += [world.create_item("Blossom Petal") for _ in range(world.options.blossom_petals)]
     itempool += [world.create_item("Blossom") for _ in range(world.options.blossoms)]
-    itempool += [world.create_item("Bonus") for _ in range(3)]
+    itempool += [world.create_item("Bonus Orb") for _ in range(3)]
 
     # Create keys if enabled
     if world.options.world_keys:

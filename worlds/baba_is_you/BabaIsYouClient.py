@@ -9,7 +9,7 @@ ModuleUpdate.update()
 import Utils
 
 # Items that have multiple copies; makes duplicate files for each copy of the item
-MULTI_ITEMS = ("Blossom Petal", "Blossom", "Bonus")
+MULTI_ITEMS = ("Blossom Petal", "Blossom", "Bonus Orb")
 
 # Removes characters that Baba Is You won't like in the storage files
 # ($ is used for color codes, = is used to tell when the data starts)

@@ -5,7 +5,7 @@ manualChecks = false
 local level_mapping = {}
 local thisWorld = "babapelago" -- name of this world
 
-local noun_checks = {"text_baba", "text_flag", "text_wall", "text_rock", "text_skull", "text_lava", "text_star", "text_crab", "text_keke", "text_love", "text_pillar", "text_jelly", "text_key", "text_door", "text_rose", "text_violet", "text_water", "text_robot", "text_bolt", "text_cog", "text_box", "text_ghost", "text_ice", "text_leaf", "text_fence", "text_me", "text_belt", "text_tree", "text_bug", "text_fungus", "text_cloud", "text_rocket", "text_ufo", "text_moon", "text_dust", "text_grass", "text_hand", "text_bat", "text_fire", "text_bird", "text_sun", "text_tile"}
+local noun_checks = {"text_baba", "text_flag", "text_wall", "text_rock", "text_skull", "text_lava", "text_star", "text_crab", "text_keke", "text_love", "text_pillar", "text_jelly", "text_key", "text_door", "text_rose", "text_violet", "text_water", "text_robot", "text_bolt", "text_cog", "text_box", "text_ghost", "text_ice", "text_leaf", "text_fence", "text_me", "text_belt", "text_tree", "text_bug", "text_fungus", "text_cloud", "text_rocket", "text_ufo", "text_moon", "text_dust", "text_grass", "text_hand", "text_fruit", "text_bat", "text_fire", "text_bird", "text_sun", "text_tile", "text_orb", "text_hedge", "text_cliff"}
 local special_noun_checks = {"text_text", "text_empty", "text_all", "text_level", "text_group", "text_cursor", "text_image"}
 local verb_checks = {"text_is", "text_has", "text_make", "text_write"}
 local prop_checks = {"text_you", "text_win", "text_stop", "text_push", "text_sink", "text_defeat", "text_hot", "text_melt", "text_move", "text_open", "text_shut", "text_red", "text_blue", "text_float", "text_weak", "text_tele", "text_pull", "text_shift", "text_up", "text_down", "text_left", "text_right", "text_swap", "text_best", "text_fall", "text_more", "text_word", "text_sleep", "text_end", "text_hide", "text_bonus", "text_done"}
@@ -17,7 +17,7 @@ local non_word_items = {
     ["Speck"] = 0,
     ["Blossom"] = 0,
     ["Blossom Petal"] = 0,
-    ["Bonus"] = 0,
+    ["Bonus Orb"] = 0,
     ["Lake Key"] = 1,
     ["Island Key"] = 1,
     ["Ruins Key"] = 1,
@@ -159,7 +159,9 @@ function addpath(id)
     local unitid = paths[#paths]
     local unit = mmf.newObject(unitid)
     if (unit.values[PATH_GATE] == 2) then
-        if unit.values[PATH_REQUIREMENT] == 3 then -- First gate
+        if manualChecks then
+            unit.values[PATH_REQUIREMENT] = 0
+        elseif unit.values[PATH_REQUIREMENT] == 3 then -- First gate
             unit.values[PATH_REQUIREMENT] = options.first_gate_blossoms
         elseif unit.values[PATH_REQUIREMENT] == 5 then -- Second gate
             unit.values[PATH_REQUIREMENT] = options.second_gate_blossoms
@@ -611,7 +613,7 @@ function update_checks()
                 blossom_count = blossom_count + 1
             elseif item == "Blossom Petal" then
                 blossom_petal_count = blossom_petal_count + 1
-            elseif item == "Bonus" then
+            elseif item == "Bonus Orb" then
                 bonus_count = bonus_count + 1
             end
 
@@ -710,6 +712,7 @@ function display_messages()
         y = y - 20
     end
 
+    local layer = ((generaldata2.values[INMENU] ~= 0) and 1) or 2
     local i = 1
     local displayed = 1
     while i <= #message_list and displayed <= 10 do
@@ -717,7 +720,7 @@ function display_messages()
         local msg, time = msgData[1], msgData[2]
         msg = msg:gsub("#", "") -- # has special meaning (also removed on AP's end but it's here for safety)
 
-        writetext(msg, 0, 20, y, id, false, 1, true)
+        writetext(msg, 0, 20, y, id, false, layer, true)
         time = time - 1
         msgData[2] = time
         if time <= 0 then
@@ -731,7 +734,7 @@ function display_messages()
     end
     
     if #error_message ~= 0 then
-        writetext(error_message, 0, 20, y, id, false, 1, true)
+        writetext(error_message, 0, 20, y, id, false, layer, true)
     end
 end
 table.insert(mod_hook_functions.always, display_messages)
@@ -840,13 +843,14 @@ function auto_gen_level_name_to_id(level_name_to_id)
         end
     end
 
-    MF_setfile("level", "AP/TEST_NAMES.data")
+    --[[MF_setfile("level", "AP/TEST_NAMES.data")
     for old,new in pairs(level_name_to_id) do
         MF_store("level", "general", old, new)
-    end
+    end]]
     
-    -- Set up level shuffle
-    if options.level_shuffle ~= 0 then
+    -- Set up level shuffle (not active in editor)
+    level_mapping = {}
+    if options.level_shuffle ~= 0 and editor.values[INEDITOR] == 0 then
         MF_setfile("level","AP/AP_SHUFFLE.data")
         local total = tonumber(MF_read("level", "general", "total")) or 0
         for i=0,total-1 do
@@ -856,7 +860,7 @@ function auto_gen_level_name_to_id(level_name_to_id)
                 local level1 = level_name_to_id[levelData[1]]
                 local level2 = level_name_to_id[levelData[2]]
                 if level1 == nil then
-                    error(newPath)
+                    error("Level Shuffle - Couldn't find level: "..levelData[1])
                 end
                 level_mapping[level1] = level2
             end

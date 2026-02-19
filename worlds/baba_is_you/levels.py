@@ -3,16 +3,16 @@ from BaseClasses import CollectionState
 # Contains information about every level and map
 def can_win(state: CollectionState, player, level):
     data = LEVEL_DATA.get(level)
+
+    # Clears for maps
+    wins = data.get("clearCount")
+    if wins != None:
+        return state.has(f"{level} Win", player, wins)
+
     words = data.get("winLogic")
     if words == None: return True
     # print(level, words, state.has_all(words, player))
     return state.has_all(words, player)
-
-def can_clear(state: CollectionState, player, level):
-    data = LEVEL_DATA.get(level)
-    wins = data.get("clearCount")
-    if wins == None: return True
-    return state.has(f"{data["name"]} Win", player, wins)
 
 LEVEL_DATA = {
     "Map": {
@@ -124,7 +124,7 @@ LEVEL_DATA = {
         "connects": {
             "Map": None,
             "Lake-1": None,
-            "Island": can_clear,
+            "Island": can_win,
         },
         "clearCount": 8,
         "completeCount": 15,
@@ -280,8 +280,8 @@ LEVEL_DATA = {
             "Lake": None,
             "Island-0": None,
             "Island-1": None,
-            "Ruins": can_clear,
-            "Fall": can_clear,
+            "Ruins": can_win,
+            "Fall": can_win,
         },
     },
     "Island-0": {
@@ -464,11 +464,11 @@ LEVEL_DATA = {
         "connects": {
             "Island": None,
             "Ruins-1": None,
-            #"Map-8": can_clear,
-            "Forest": can_clear,
-            "Space": can_clear,
-            "Garden": can_clear,
-            "Cavern": can_clear,
+            #"Map-8": can_win,
+            "Forest": can_win,
+            "Space": can_win,
+            "Garden": can_win,
+            "Cavern": can_win,
         },
     },
     "Ruins-1": {
@@ -791,7 +791,7 @@ LEVEL_DATA = {
             "Ruins": None,
             "Space": None,
             "Forest-1": None,
-            "Chasm": can_clear,
+            "Chasm": can_win,
         },
     },
     "Forest-1": {
@@ -1458,7 +1458,7 @@ LEVEL_DATA = {
             "Cavern-1": None,
             "Cavern-2": None,
             #"Map-8": None,
-            "Mountain": can_clear,
+            "Mountain": can_win,
         },
     },
     "Cavern-1": {

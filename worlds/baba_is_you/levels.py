@@ -4,12 +4,17 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from .world import BabaIsYouWorld
 
-from .options import LogicDifficulty, OpenMap, ExcludeMazeTransform
+from .options import LogicDifficulty, OpenMap, ExcludeMazeTransform, FirstGateBlossoms, SecondGateBlossoms, ThirdGateBlossoms
 from rule_builder.rules import And, False_, CanReachRegion, Has, HasAny, HasAll, OptionFilter, Or, Rule, True_
+from rule_builder.field_resolvers import FieldResolver, FromOption, FromWorldAttr, resolve_field
+from .custom_rules import HasBlossoms
 
 hard_logic_filter = [OptionFilter(LogicDifficulty, LogicDifficulty.option_hard)]
 open_map_filter = [OptionFilter(OpenMap, 1)]
 maze_transform_filter = [OptionFilter(ExcludeMazeTransform, 0)]
+check_first_gate = HasBlossoms(count = FromOption(FirstGateBlossoms))
+check_second_gate = HasBlossoms(count = FromOption(SecondGateBlossoms))
+check_third_gate = HasBlossoms(count = FromOption(ThirdGateBlossoms))
 
 # Gets the rule to win a level
 def can_win(level : str, logic_diff : int) -> Rule:
@@ -164,7 +169,7 @@ LEVEL_DATA = {
             "Map-1": can_win,
             "Map-4": can_win,
             "Map-6": can_win,
-            "Map-Finale": can_win,
+            "Map-Finale": (can_win, check_first_gate),
         },
         "winLogic": HasAll("Rock", "Is", "Push", "Flag", "Win"),
         "winLogicAdv": HasAll("Push", "Win") | (Has("Rock") & HasAny("Flag", "Win")) | (Has("Is") & HasAny("Win", "Rock", "Flag")),
@@ -205,7 +210,7 @@ LEVEL_DATA = {
             "Map-4": can_win,
             "Map-7": can_win,
             "Lake": can_win,
-            "Map-Finale": can_win,
+            "Map-Finale": (can_win, check_first_gate),
         },
         "winLogic": HasAll("Baba", "Is", "You", "Wall", "Stop"),
         "winLogicAdv": Has("Wall") & HasAny("Is", "Baba"),
@@ -220,7 +225,7 @@ LEVEL_DATA = {
             "Map-5": can_win,
             "Map-6": can_win,
             "Lake": can_win,
-            "Map-Finale": can_win,
+            "Map-Finale": (can_win, check_first_gate),
         },
         "winLogic": HasAll("Baba", "Is", "You", "Flag", "Win"),
         "winLogicAdv": HasAll("Flag", "Win"),
@@ -235,7 +240,7 @@ LEVEL_DATA = {
             "Map-10": can_win,
             "Ruins": can_win,
             "Garden": can_win,
-            "Cavern": can_win,
+            "Cavern": (can_win, check_second_gate),
         },
     },
     "Map-9": {
@@ -676,11 +681,11 @@ LEVEL_DATA = {
         "connects": {
             "Island": None,
             "Ruins-1": None,
-            "Map-8": can_win,
+            "Map-8": (can_win, check_third_gate),
             "Forest": can_win,
             "Space": can_win,
             "Garden": can_win,
-            "Cavern": can_win,
+            "Cavern": (can_win, check_second_gate),
         },
     },
     "Ruins-1": {
@@ -1443,8 +1448,8 @@ LEVEL_DATA = {
         "completeCount": 12,
         "connects": {
             "Ruins": None,
-            "Cavern": None,
-            "Map-8": None,
+            "Cavern": check_second_gate,
+            "Map-8": check_third_gate,
             "Garden-1": None,
             "Garden-2": None,
         },
@@ -1765,7 +1770,7 @@ LEVEL_DATA = {
             "Garden": None,
             "Cavern-1": None,
             "Cavern-2": None,
-            "Map-8": None,
+            "Map-8": check_third_gate,
             "Mountain": can_win,
         },
     },

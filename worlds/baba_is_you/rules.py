@@ -2,13 +2,13 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from BaseClasses import CollectionState
 from worlds.generic.Rules import add_rule, set_rule
 
 from . import items
 from .levels import LEVEL_DATA, can_win, can_bonus, can_transform, is_level_winnable, has_any_transform
 from .locations import BabaIsYouLocation
-from rule_builder.rules import And, CanReachRegion, Has, HasAny, HasAll, Or, Rule, True_
+from .custom_rules import HasBlossoms
+from rule_builder.rules import And, CanReachRegion, Has, HasAny, HasAll, Or, Rule, True_, HasFromList
 
 if TYPE_CHECKING:
     from .world import BabaIsYouWorld
@@ -20,42 +20,12 @@ def set_all_rules(world: BabaIsYouWorld) -> None:
     # Note: Regions do not have rules, the Entrances connecting them do!
     # We'll do entrances first, then locations, and then finally we set our victory condition.
 
-    set_up_gates(world)
+    set_goal_rule(world)
     set_all_location_rules(world)
     set_completion_condition(world)
 
 
-def set_up_gates(world: BabaIsYouWorld) -> None:
-    # Set up gates for specific areas
-    def check_first_gate(state: CollectionState):
-        return get_blossom_count(state, world) >= world.options.first_gate_blossoms
-
-    def check_second_gate(state: CollectionState):
-        return get_blossom_count(state, world) >= world.options.second_gate_blossoms
-    
-    def check_third_gate(state: CollectionState):
-        return get_blossom_count(state, world) >= world.options.third_gate_blossoms
-    
-    # Gate to A Way Out?
-    a_way_out = world.get_region("Map-Finale")
-    for entrance in a_way_out.entrances:
-        if entrance.parent_region.name == "Map": continue # exception for Baba transform
-        add_rule(entrance, check_first_gate)
-
-    # Gate to Cavern
-    cavern = world.get_region("Cavern")
-    for entrance in cavern.entrances:
-        if entrance.parent_region.name == "Map": continue # exception for Baba transform
-        add_rule(entrance, check_second_gate)
-
-    # Gate to Slideshow
-    if world.options.area_access > 0:
-        slideshow = world.get_region("Map-8")
-        if world.options.level_shuffle != 0:
-            slideshow = world.get_region(world.level_shuffle_dict.get("Map-8", "Map-8"))
-        for entrance in slideshow.entrances:
-            add_rule(entrance, check_third_gate)
-
+def set_goal_rule(world: BabaIsYouWorld) -> None:
     # Conditions for ending
     if world.options.goal == 0:
         ending = world.get_location("Goal Reached")
@@ -125,38 +95,16 @@ def set_all_location_rules(world: BabaIsYouWorld) -> None:
             
             world.set_rule(location, Has(itemName, wins))
 
+# All maps with winnable levels
+WIN_NAMES = ("Map Win", "Lake Win", "Island Win", "Ruins Win", "Fall Win",
+             "Forest Win", "Space Win", "Garden Win", "Chasm Win", "Cavern Win",
+             "Mountain Win", "??? Win", "ABC Win", "Null Win", "Depths Win",
+             "Meta Win", "Center Win")
+
 def set_completion_condition(world: BabaIsYouWorld) -> None:
     if world.options.goal <= 4: # end, flower, depths, meta
         world.set_completion_rule(Has("goal_reached"))
     elif world.options.goal == 5: # levels
-        world.multiworld.completion_condition[world.player] = lambda state: get_win_count(state, world) >= world.options.goal_levels
+        world.set_completion_rule(HasFromList(*WIN_NAMES, count=int(world.options.goal_levels)))
     elif world.options.goal == 6: # blossoms
-        world.multiworld.completion_condition[world.player] = lambda state: get_blossom_count(state, world) >= world.options.goal_blossoms
-
-# Count blossoms from petals and normal
-def get_blossom_count(state: CollectionState, world: BabaIsYouWorld):
-    petals = state.count("Blossom Petal", world.player)
-    blossoms = state.count("Blossom", world.player) + (petals // 8)
-    return blossoms
-
-# Manually count the wins from each map.
-# NOTE: Needs to be manually updated when late game is added
-def get_win_count(state: CollectionState, world: BabaIsYouWorld):
-    wins = state.count("Map Win", world.player)
-    wins += state.count("Lake Win", world.player)
-    wins += state.count("Island Win", world.player)
-    wins += state.count("Ruins Win", world.player)
-    wins += state.count("Fall Win", world.player)
-    wins += state.count("Forest Win", world.player)
-    wins += state.count("Space Win", world.player)
-    wins += state.count("Garden Win", world.player)
-    wins += state.count("Chasm Win", world.player)
-    wins += state.count("Cavern Win", world.player)
-    wins += state.count("Mountain Win", world.player)
-    wins += state.count("??? Win", world.player)
-    wins += state.count("ABC Win", world.player)
-    wins += state.count("Null Win", world.player)
-    wins += state.count("Depths Win", world.player)
-    wins += state.count("Meta Win", world.player)
-    wins += state.count("Center Win", world.player)
-    return wins
+        world.set_completion_rule(HasBlossoms(count=int(world.options.goal_blossoms)))

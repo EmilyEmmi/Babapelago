@@ -80,7 +80,7 @@ def connect_regions(world: BabaIsYouWorld) -> None:
                         else:
                             # iterate through tuple
                             for subRule in connectRule:
-                                if callable(connectRule):
+                                if callable(subRule):
                                     rule = rule & subRule(name, world.options.logic_difficulty)
                                 else:
                                     rule = rule & subRule

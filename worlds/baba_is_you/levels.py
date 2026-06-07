@@ -2387,7 +2387,7 @@ LEVEL_DATA = {
         "parent": "ABC",
         "areaAccess": 2,
         "winLogic": HasAll("Belt", "Is", "Melt", "Flag", "G", "R", "A", "S", "H", "O", "T"),
-        "winLogicAdv": Has("Is") & (HasAll("O", "H") | Has("T")) & Has("Flag") & (HasAll("S", "A") | HasAll("S", "R") | HasAll("A", "R")) & (Has("Belt") | HasAll("S", "T", "A", "R", "G", "H", "O")),
+        "winLogicAdv": Has("Is") & (HasAll("S", "O", "H") | Has("T")) & Has("Flag") & (HasAll("S", "A") | HasAll("S", "R") | HasAll("A", "R")) & (Has("Belt") | HasAll("S", "T", "A", "R", "G", "H", "O")),
         "connects": {
             "ABC-4": can_win,
             "ABC-Extra 1": can_win,

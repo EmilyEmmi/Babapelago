@@ -634,6 +634,7 @@ table.insert(mod_hook_functions.mouse_click, function(data)
             if mouse_button == 2 then
                 levelToTransform = level
                 open_text_input(startText)
+                break
             end
         elseif unit.strings[UNITTYPE] == "text" then
             if (mouse_button == 1) then
@@ -737,7 +738,7 @@ function update_checks()
             end
 
             if found_main_save_slot then
-                error_message = ("Missing seed file for slot "..(generaldata2.values[SAVESLOT]+1)..", but found one for the main save. Switch to slot 1 or use /save_slot in the client.")
+                error_message = ("Missing seed file for slot "..(generaldata2.values[SAVESLOT]+1)..", but found one for the main save. Switch to slot 1 or use  /save_slot in the client.")
             else
                 error_message = ("Missing seed file for slot "..(generaldata2.values[SAVESLOT]+1)..". Please connect to the server using the Baba Is You client.")
             end

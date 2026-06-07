@@ -407,7 +407,7 @@ async def game_watcher(ctx: BabaIsYouContext):
                         lines = f.readlines()
                         f.close()
                 except OSError as e:
-                    logger.info("Error: "+str(e))
+                    pass # logger.info("Error: "+str(e))
                 
                 for line in lines:
                     location = line[:-3]

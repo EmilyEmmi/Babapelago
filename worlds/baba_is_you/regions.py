@@ -63,27 +63,35 @@ def connect_regions(world: BabaIsYouWorld) -> None:
                 subLevel = world.get_region(otherRegion)
                 level.connect(subLevel)
                 entrance = world.get_entrance(entranceName)
-                otherParent = LEVEL_DATA[orgOtherRegion].get("parent")
+                otherData = LEVEL_DATA[orgOtherRegion]
+                otherParent = otherData.get("parent")
 
                 rule = True_()
-                # Add connection rules, ignoring for map levels if open map is enabled
-                if (parent != "Map" or otherParent != "Map" or not world.options.open_map):
-                    if world.options.world_keys and data.get("key") is not None:
-                        rule = rule & Has(data.get("key")) # add rule for key
+                openMap = (parent == "Map" and otherParent == "Map" and world.options.open_map)
+                
+                # Add rules for keys
+                if (world.options.world_keys and not openMap):
+                    if data.get("key") is not None:
+                        rule = rule & Has(data.get("key"))
+                    if otherData.get("key") is not None:
+                        rule = rule & Has(otherData.get("key"))
 
-                    connectRule = connections.get(orgOtherRegion)
-                    if (connectRule is not None):
-                        if callable(connectRule):
+                # Add connection rules, ignoring can_win and keys for map levels if open map is enabled
+                connectRule = connections.get(orgOtherRegion)
+                if (connectRule is not None):
+                    if callable(connectRule):
+                        if not openMap:
                             rule = rule & connectRule(name, world.options.logic_difficulty)
-                        elif not isinstance(connectRule, Iterable):
-                            rule = rule & connectRule
-                        else:
-                            # iterate through tuple
-                            for subRule in connectRule:
-                                if callable(subRule):
+                    elif not isinstance(connectRule, Iterable):
+                        rule = rule & connectRule
+                    else:
+                        # iterate through tuple
+                        for subRule in connectRule:
+                            if callable(subRule):
+                                if not openMap:
                                     rule = rule & subRule(name, world.options.logic_difficulty)
-                                else:
-                                    rule = rule & subRule
+                            else:
+                                rule = rule & subRule
                 
                 world.set_rule(entrance, rule)
 

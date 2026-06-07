@@ -282,7 +282,7 @@ LEVEL_DATA = {
             "Map-6": None,
         },
         "winLogic": HasAll("Keke", "Is", "Push", "Belt", "Shift", "Rock", "Win"),
-        "winLogicAdv": HasAll("Keke", "Is", "You", "Rock", "Push") & (hard_logic_filter | HasAll("Belt", "Shift")),
+        "winLogicAdv": HasAll("Keke", "Is", "You", "Rock", "Push", "Win") & (hard_logic_filter | HasAll("Belt", "Shift")),
     },
     "Map-?": {
         "name": "?",
@@ -1694,6 +1694,7 @@ LEVEL_DATA = {
             "Chasm": None,
             "Chasm-Extra 2": can_win,
             "Chasm-Extra 3": can_win,
+            "Chasm-Extra 4": can_win,
         },
     },
     "Chasm-Extra 2": {
@@ -2304,6 +2305,7 @@ LEVEL_DATA = {
         "name": "Orb",
         "parent": "???",
         "areaAccess": 3, # requires winning Depths
+        "bonusLogic": True_(),
         "connects": {
             "Depths": can_win,
         },

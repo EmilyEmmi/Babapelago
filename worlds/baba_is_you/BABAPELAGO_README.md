@@ -35,9 +35,15 @@ NOTE: You may have a hard time generating with certain options due to the restri
 
 # Advanced Features
 
+## Universal Tracker
+If you have [Universal Tracker](https://github.com/FarisTheAncient/Archipelago/releases) installed, the Baba Is You client will have two new tabs. The Tracker tab shows any locations you can access, and the Map tab shows a map of where those locations are. Also note that this game supports yaml-less tracking, meaning that unlike other Archipelago games, you don't need to place your .yaml file inside of the Players folder for the tracker to work correctly.
+
 ## Offline testing
 
-If you launch the Babapelago levelpack without connecting to an AP World and press M, Manual mode will be activated. This allows you to enable/disable items in the built-in Items submenu in the bottom-left corner of the Pause menu. You can also use this menu in normal play to see your goal and what items you have unlocked.
+If you launch the Babapelago levelpack without connecting to an AP World and press M, Manual mode will be activated. This allows you to enable/disable items in the built-in Items submenu in the bottom-left corner of the Pause menu. You can also use this menu in normal play to see your goal and what items you have unlocked. Some other features in manual mode include:
+- Left click text to add it to your inventory, right click to remove.
+- Right click levels to edit transformations (ie "baba,text_level" turns the level into Baba and Level Text), and middle click to remove.
+- Press "1" to toggle Debug Mode, which lets you win the current level with CTRL+M (Command instead of CTRL on Mac), and clear levels on the map with CTRL+Left Click. Note that this persists outside of the pack, too.
 
 ## Multiple slots at once
 

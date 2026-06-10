@@ -151,6 +151,7 @@ class BabaIsYouWorld(World):
                 continue
 
             prefix = f"{level_data.get("name")}: "
+            parent = LEVEL_DATA.get(slot_name).get("parent")
             for locationName in get_level_locations(level_data, self):
                 location_id = locations.LOCATION_NAME_TO_ID.get(locationName)
                 if location_id is None:
@@ -163,6 +164,8 @@ class BabaIsYouWorld(World):
 
                 shortLocName = locationName[len(prefix):]
                 mapping[f"{slot_name}/{shortLocName}"] = location_id
+                if parent:
+                    mapping[f"{parent}/{slot_name}: {shortLocName}"] = location_id
 
         return mapping
 

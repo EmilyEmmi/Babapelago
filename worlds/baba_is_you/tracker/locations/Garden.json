@@ -10,11 +10,6 @@
             "map": "Flower Garden",
             "x": 48,
             "y": 48
-          },
-          {
-            "map": "Map",
-            "x": 1200,
-            "y": 720
           }
         ],
         "sections": [

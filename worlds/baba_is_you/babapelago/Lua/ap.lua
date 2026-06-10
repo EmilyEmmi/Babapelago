@@ -586,6 +586,16 @@ table.insert(mod_hook_functions.keyboard_input, function(data)
     elseif key == "L" and manualChecks then
         add_to_messages("Level list test")
         listlevels()
+    elseif key == "1" and manualChecks then
+        local debug = tonumber(MF_read("settings","settings","debug")) or 0
+        debug = (debug == 0 and 1) or 0
+        MF_store("settings","settings","debug", tostring(debug))
+
+        if debug ~= 0 then
+            add_to_messages("Debug mode enabled")
+        else
+            add_to_messages("Debug mode disabled")
+        end
     end
 end)
 

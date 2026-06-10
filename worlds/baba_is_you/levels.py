@@ -282,7 +282,7 @@ LEVEL_DATA = {
             "Map-6": None,
         },
         "winLogic": HasAll("Keke", "Is", "Push", "Belt", "Shift", "Rock", "Win"),
-        "winLogicAdv": HasAll("Keke", "Is", "You", "Rock", "Push", "Win") & (hard_logic_filter | HasAll("Belt", "Shift")),
+        "winLogicAdv": HasAll("Keke", "Is", "Rock", "Push", "Win") & (hard_logic_filter | HasAll("Belt", "Shift")),
     },
     "Map-?": {
         "name": "?",

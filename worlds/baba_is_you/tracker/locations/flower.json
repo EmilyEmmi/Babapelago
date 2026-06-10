@@ -10,11 +10,6 @@
             "map": "???",
             "x": 48,
             "y": 48
-          },
-          {
-            "map": "ABC",
-            "x": 1488,
-            "y": 1104
           }
         ],
         "sections": [
@@ -559,6 +554,75 @@
           },
           {
             "name": "Bonus",
+            "item_count": 1
+          }
+        ]
+      },
+      {
+        "name": "ABC",
+        "short_name": "ABC",
+        "map_locations": [
+          {
+            "map": "???",
+            "x": 1584,
+            "y": 336
+          }
+        ],
+        "sections": [
+          {
+            "name": "ABC-1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "ABC-1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "ABC-2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "ABC-2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "ABC-3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "ABC-3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "ABC-4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "ABC-4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "ABC-5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "ABC-5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "ABC-Extra 1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "ABC-Extra 1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Clear",
+            "item_count": 1
+          },
+          {
+            "name": "Complete",
             "item_count": 1
           }
         ]

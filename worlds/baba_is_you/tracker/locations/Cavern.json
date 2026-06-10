@@ -10,11 +10,6 @@
             "map": "Volcanic Cavern",
             "x": 48,
             "y": 48
-          },
-          {
-            "map": "Map",
-            "x": 1008,
-            "y": 432
           }
         ],
         "sections": [

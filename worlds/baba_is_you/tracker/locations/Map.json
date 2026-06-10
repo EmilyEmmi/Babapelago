@@ -10,11 +10,6 @@
             "map": "Map",
             "x": 48,
             "y": 48
-          },
-          {
-            "map": "???",
-            "x": 2160,
-            "y": 816
           }
         ],
         "sections": [
@@ -309,6 +304,1416 @@
           },
           {
             "name": "Bonus",
+            "item_count": 1
+          }
+        ]
+      },
+      {
+        "name": "Lake",
+        "short_name": "Lake",
+        "map_locations": [
+          {
+            "map": "Map",
+            "x": 1488,
+            "y": 912
+          }
+        ],
+        "sections": [
+          {
+            "name": "Lake-1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-6: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-6: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-7: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-7: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-8: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-8: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-9: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-9: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-10: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-10: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-11: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-11: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-12: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-12: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-13: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-13: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-Extra 1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-Extra 1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-Extra 2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Lake-Extra 2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Clear",
+            "item_count": 1
+          },
+          {
+            "name": "Complete",
+            "item_count": 1
+          }
+        ]
+      },
+      {
+        "name": "Island",
+        "short_name": "Island",
+        "map_locations": [
+          {
+            "map": "Map",
+            "x": 1680,
+            "y": 816
+          }
+        ],
+        "sections": [
+          {
+            "name": "Island-0: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-0: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-6: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-6: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-7: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-7: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-8: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-8: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-9: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-9: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-10: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-10: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-11: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-11: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-Extra 1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-Extra 1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-Extra 2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-Extra 2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-Extra 3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-Extra 3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-Extra 4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-Extra 4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-Extra 5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-Extra 5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Island-Extra 6: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Island-Extra 6: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Clear",
+            "item_count": 1
+          },
+          {
+            "name": "Complete",
+            "item_count": 1
+          }
+        ]
+      },
+      {
+        "name": "Ruins",
+        "short_name": "Ruins",
+        "map_locations": [
+          {
+            "map": "Map",
+            "x": 1680,
+            "y": 528
+          }
+        ],
+        "sections": [
+          {
+            "name": "Ruins-1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-6: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-6: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-7: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-7: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-8: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-8: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-Extra 1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Ruins-Extra 1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Clear",
+            "item_count": 1
+          },
+          {
+            "name": "Complete",
+            "item_count": 1
+          }
+        ]
+      },
+      {
+        "name": "Fall",
+        "short_name": "Fall",
+        "map_locations": [
+          {
+            "map": "Map",
+            "x": 1968,
+            "y": 1200
+          }
+        ],
+        "sections": [
+          {
+            "name": "Fall-1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-6: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-6: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-7: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-7: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-8: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-8: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-9: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-9: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-10: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-10: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-11: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-11: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-12: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-12: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-A: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-A: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-B: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-B: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-C: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-C: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-D: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-D: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-E: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-E: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-Extra 1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-Extra 1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-Extra 2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-Extra 2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-Extra 3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Fall-Extra 3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Clear",
+            "item_count": 1
+          },
+          {
+            "name": "Complete",
+            "item_count": 1
+          }
+        ]
+      }, 
+      {
+        "name": "Forest",
+        "short_name": "Forest",
+        "map_locations": [
+          {
+            "map": "Map",
+            "x": 1968,
+            "y": 528
+          }
+        ],
+        "sections": [
+          {
+            "name": "Forest-1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-6: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-6: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-7: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-7: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-8: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-8: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-9: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-9: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-10: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-10: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-11: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-11: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-12: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-12: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-13: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-13: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-14: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-14: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-A: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-A: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-B: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-B: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-C: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-C: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-D: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-D: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-E: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-E: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-Extra 1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-Extra 1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-Extra 2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Forest-Extra 2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Clear",
+            "item_count": 1
+          },
+          {
+            "name": "Complete",
+            "item_count": 1
+          }
+        ]
+      },
+      {
+        "name": "Space",
+        "short_name": "Space",
+        "map_locations": [
+          {
+            "map": "Map",
+            "x": 1872,
+            "y": 336
+          }
+        ],
+        "sections": [
+          {
+            "name": "Space-1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-6: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-6: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-7: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-7: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-8: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-8: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-9: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-9: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-10: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-10: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-11: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-11: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-12: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-12: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-13: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-13: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-Extra 1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-Extra 1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Space-Extra 2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Space-Extra 2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Clear",
+            "item_count": 1
+          },
+          {
+            "name": "Complete",
+            "item_count": 1
+          }
+        ]
+      },
+      {
+        "name": "Garden",
+        "short_name": "Garden",
+        "map_locations": [
+          {
+            "map": "Map",
+            "x": 1200,
+            "y": 720
+          }
+        ],
+        "sections": [
+          {
+            "name": "Garden-1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-6: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-6: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-7: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-7: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-8: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-8: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-9: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-9: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-10: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-10: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-Extra 1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-Extra 1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-Extra 2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Garden-Extra 2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Clear",
+            "item_count": 1
+          },
+          {
+            "name": "Complete",
+            "item_count": 1
+          }
+        ]
+      },
+      {
+        "name": "Chasm",
+        "short_name": "Chasm",
+        "map_locations": [
+          {
+            "map": "Map",
+            "x": 2256,
+            "y": 912
+          }
+        ],
+        "sections": [
+          {
+            "name": "Chasm-A: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-A: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-B: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-B: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-C: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-C: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-D: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-D: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-E: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-E: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-F: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-F: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-G: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-G: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-H: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-H: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-I: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-I: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 6: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 6: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 7: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Chasm-Extra 7: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Clear",
+            "item_count": 1
+          },
+          {
+            "name": "Complete",
+            "item_count": 1
+          }
+        ]
+      },
+      {
+        "name": "Cavern",
+        "short_name": "Cavern",
+        "map_locations": [
+          {
+            "map": "Map",
+            "x": 1008,
+            "y": 432
+          }
+        ],
+        "sections": [
+          {
+            "name": "Cavern-1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-6: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-6: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-7: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-7: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-8: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-8: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-9: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-9: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-10: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-10: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-11: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-11: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-12: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-12: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-13: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-13: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-14: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-14: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-Extra 1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Cavern-Extra 1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Clear",
+            "item_count": 1
+          },
+          {
+            "name": "Complete",
+            "item_count": 1
+          }
+        ]
+      },
+      {
+        "name": "Mountain",
+        "short_name": "Mountain",
+        "map_locations": [
+          {
+            "map": "Map",
+            "x": 912,
+            "y": 240
+          }
+        ],
+        "sections": [
+          {
+            "name": "Mountain-1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-6: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-6: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-7: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-7: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-8: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-8: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-Extra 1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Mountain-Extra 1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Clear",
+            "item_count": 1
+          },
+          {
+            "name": "Complete",
             "item_count": 1
           }
         ]

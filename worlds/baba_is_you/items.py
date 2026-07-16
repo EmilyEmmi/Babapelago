@@ -65,7 +65,7 @@ for word in ALL_PROG_WORDS:
     ITEM_NAME_TO_ID[word] = nextID
     DEFAULT_ITEM_CLASSIFICATIONS[word] = ItemClassification.progression
     nextID += 1
-for word in ALL_FILLER_WORDS:
+for word in FILLER_WORDS:
     ITEM_NAME_TO_ID[word] = nextID
     DEFAULT_ITEM_CLASSIFICATIONS[word] = ItemClassification.filler
     nextID += 1
@@ -94,10 +94,6 @@ def create_item_with_correct_classification(world: BabaIsYouWorld, name: str) ->
     # End becomes filler if reaching the end isn't our goal
     if (name == "Bonus Orb" and world.options.exclude_gallery) or (name == "End" and world.options.goal != 0):
         classification = ItemClassification.filler
-    elif ITEM_NAME_TO_ID[name] > 100 and (name in ALL_PROG_WORDS):
-        # Check if name is in the current progression word list; if not, mark as filler
-        if not (name in get_curr_prog_words(world)):
-            classification = ItemClassification.filler
 
     return BabaIsYouItem(name, classification, ITEM_NAME_TO_ID[name], world.player)
 
@@ -229,7 +225,7 @@ def create_all_items(world: BabaIsYouWorld) -> None:
     
     # Create all word items
     filler_words = []
-    for word in ALL_WORDS:
+    for word in get_active_words(world):
         if world.options.start_with_default_words and word in DEFAULT_WORDS:
             # Start with the words in "Baba Is You"
             world.push_precollected(world.create_item(word))

@@ -444,7 +444,7 @@ LEVEL_DATA = {
             "Lake-7": can_win,
             "Lake-10": can_win,
         },
-        "winLogic": HasAll("Key", "Is", "Open", "Shut"),
+        "winLogic": HasAll("Key", "Is", "Open", "Shut", "Star", "Wall", "Push", "Stop"),
         "winLogicAdv": HasAll("Key", "Is") & HasAny("Star", "Stop", "Open", "Shut"),
     },
     "Lake-Extra 1": {

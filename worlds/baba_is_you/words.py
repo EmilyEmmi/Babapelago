@@ -35,7 +35,7 @@ META_WORDS = ("Near", "Cursor", "I")
 CENTER_WORDS = ("Cake", "Done", "Image", "F", "U", "X")
 
 # Words that are always filler
-FILLER_WORDS = ("Anni", "Best", "Down", "Left", "Hedge", "Cliff", "Line", "F", "U", "X")
+FILLER_WORDS = ("Anni", "Best", "Down", "Left", "Hedge", "Cliff", "Line")
 
 # Every single word, including both progression and filler
 ALL_WORDS = (DEFAULT_WORDS + EARLY_WORDS + TOP_GATE_WORDS + FLOWER_WORDS + DEPTHS_WORDS + META_WORDS + CENTER_WORDS)

@@ -65,13 +65,15 @@ class LogicDifficulty(Choice):
     Determines the logic difficulty for levels.
     easy: All interactable words are expected to complete a level.
     normal: Only the necessary words will be expected to complete a level. You may have to use alternative solutions.
-    hard: Like normal, but also includes very difficult solutions, some of which require advanced techniques like parsing bugs and object priority.
+    hard: Like normal, but also includes solutions that are much more difficult than the original level.
+    advanced: Like hard, but also includes solutions that require advanced techniques like parsing bugs and object priority.
     """
 
     display_name = "Logic Difficulty"
     option_easy = 0
     option_normal = 1
     option_hard = 2
+    option_advanced = 3
     default = 1
 
 class StartWithDefaultWords(DefaultOnToggle):

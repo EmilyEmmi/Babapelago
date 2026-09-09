@@ -1484,7 +1484,7 @@ LEVEL_DATA = {
         "name": "Sorting Facility",
         "parent": "Garden",
         "winLogic": HasAll("Rock", "Is", "Push", "Belt", "On"),
-        "winLogicAdv": Has("Is") & (HasAll("Rock", "Is", "Push", "Belt") | (hard_logic_filter & ((Has("On") & (Has("Belt") | HasAll("Rock", "Push"))) | HasAll("Belt", "Rock", "Push")))),
+        "winLogicAdv": Has("Is") & (HasAll("Rock", "On", "Push", "Belt") | (hard_logic_filter & ((Has("On") & (Has("Belt") | HasAll("Rock", "Push"))) | HasAll("Belt", "Rock", "Push")))),
         "connects": {
             "Garden-1": can_win,
             "Garden-4": can_win,

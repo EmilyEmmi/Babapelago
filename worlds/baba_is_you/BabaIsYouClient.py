@@ -358,7 +358,7 @@ class BabaIsYouContext(CommonContext):
                 break
 
         # Set up seed file (done to prevent getting checks from previous games)
-        if foundSeed:
+        if not foundSeed:
             currPath = os.path.join(self.game_communication_path,f"AP_SEED_{self.seed_name}.data")
             with open(currPath, 'w') as f:
                 f.close()

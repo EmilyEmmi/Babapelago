@@ -115,8 +115,6 @@ class BabaIsYouClientCommandProcessor(ClientCommandProcessor):
     
     def _cmd_filepath(self) -> bool:
         """Change filepath to Baba Is You installation."""
-        import platform
-        osName = platform.system()
 
         path = Utils.open_directory("Select Baba Is You directory...")
         if path is None:
@@ -124,12 +122,12 @@ class BabaIsYouClientCommandProcessor(ClientCommandProcessor):
             self.output("Error: " + msg)
             return False
 
-        if osName == "Darwin": # Mac
+        if Utils.is_macos: # Mac
             path = path.replace("\\ ", " ")
             path = path.strip()
         path = path.strip("\"")
         
-        if osName == "Darwin": # Navigate inside application package
+        if Utils.is_macos: # Navigate inside application package
             path = os.path.join(path, "Baba Is You.app", "Contents", "Resources")
 
         if os.path.isdir(path):
@@ -188,32 +186,30 @@ class BabaIsYouContext(CommonContext):
         self.is_connected = False
         self.duplicate_files = {}
 
-        import platform
-        osName = platform.system()
-
         # Find Baba Is You steam installation (dennisw100, modified)
         path = None
         try:
-            if osName == "Windows":
+            if Utils.is_windows:
                 import winreg
                 steam_path = os.path.join(winreg.QueryValueEx(winreg.OpenKey(winreg.HKEY_CURRENT_USER, "SOFTWARE\\VALVE\\Steam"), "SteamPath")[0], 'steamapps', 'libraryfolders.vdf')
-            elif osName == "Darwin":
+            elif Utils.is_macos:
                 steam_path = os.path.expanduser("~/Library/Application Support/Steam/steamapps/libraryfolders.vdf")
-            else:
+            elif Utils.is_linux:
                 steam_path = os.path.expanduser("~/.steam/steam/steamapps/libraryfolders.vdf") # Some installs might put it elsewhere, oh well
         except Exception as e:
             logger.info("Error: "+str(e)) # Happens on linux?
-        
-        try:
-            with open(steam_path, 'r', encoding='utf-8') as file:
-                content = file.read()
-                library_paths = {index: path for index, path in re.findall(r"\"(\d+)\"\s+?\{[^}]*\"path\"\s+?\"([^\"]+)\"", content)}
-                for index, testpath in library_paths.items():
-                    testpath = os.path.join(testpath, "steamapps", "common", "Baba Is You")
-                    if os.path.isfile(os.path.join(testpath, "Baba Is You.exe")) or os.path.isdir(os.path.join(testpath, "Baba Is You.app") or os.path.isfile(os.path.join(testpath, "run.sh"))):
-                        path = testpath
-        except OSError:
-            path = None # couldn't open
+
+        if steam_path is not None:
+            try:
+                with open(steam_path, 'r', encoding='utf-8') as file:
+                    content = file.read()
+                    library_paths = {index: path for index, path in re.findall(r"\"(\d+)\"\s+?\{[^}]*\"path\"\s+?\"([^\"]+)\"", content)}
+                    for index, testpath in library_paths.items():
+                        testpath = os.path.join(testpath, "steamapps", "common", "Baba Is You")
+                        if os.path.isfile(os.path.join(testpath, "Baba Is You.exe")) or os.path.isdir(os.path.join(testpath, "Baba Is You.app") or os.path.isfile(os.path.join(testpath, "run.sh"))):
+                            path = testpath
+            except OSError:
+                path = None # couldn't open
         
         if (path is not None) and os.path.isdir(path):
             logger.info(f"Found steam installation at: {os.path.abspath(path)}")
@@ -226,12 +222,12 @@ class BabaIsYouContext(CommonContext):
                 sys.exit(1)
                 return
 
-            if osName == "Darwin": # Mac
+            if Utils.is_macos: # Mac
                 path = path.replace("\\ ", " ")
                 path = path.strip()
         path = path.strip("\"")
         
-        if osName == "Darwin": # Navigate inside application package
+        if Utils.is_macos: # Navigate inside application package
             path = os.path.join(path, "Baba Is You.app", "Contents", "Resources")
 
         if os.path.isdir(path):
@@ -260,10 +256,7 @@ class BabaIsYouContext(CommonContext):
         self.is_connected = False
         self.duplicate_files = {}
         await super(BabaIsYouContext, self).connection_closed()
-        for root, dirs, files in os.walk(self.game_communication_path):
-            for file in files:
-                if file.endswith(".item") or file.endswith(".data") or file.endswith(".tmp") or file.endswith(".sent"):
-                    os.remove(root + "/" + file)
+        self.erase_old_files()
 
     @property
     def endpoints(self):
@@ -276,10 +269,7 @@ class BabaIsYouContext(CommonContext):
         self.is_connected = False
         self.duplicate_files = {}
         await super(BabaIsYouContext, self).shutdown()
-        for root, dirs, files in os.walk(self.game_communication_path):
-            for file in files:
-                if file.endswith(".item") or file.endswith(".data") or file.endswith(".tmp") or file.endswith(".sent"):
-                    os.remove(root+"/"+file)
+        self.erase_old_files()
 
     def on_package(self, cmd: str, args: dict):
         # Relay packages to the tracker
@@ -350,16 +340,25 @@ class BabaIsYouContext(CommonContext):
             f.write(f"seed={str(self.seed_name)}")
             f.close()
 
-        # Remove existing seed file
+        # Replace existing seed file
+        foundSeed = False
         for root, dirs, files in os.walk(self.game_communication_path):
             for file in files:
                 if file.startswith("AP_SEED_") and file.endswith(".data"):
-                    os.remove(root + "/" + file)
+                    seed = file[8:-5]
+                    if seed != str(self.seed_name):
+                        os.remove(root + "/" + file)
+                        self.erase_old_files()
+                    foundSeed = True
+                    break
+            if foundSeed:
+                break
 
         # Set up seed file (done to prevent getting checks from previous games)
-        currPath = os.path.join(self.game_communication_path,f"AP_SEED_{self.seed_name}.data")
-        with open(currPath, 'w') as f:
-            f.close()
+        if foundSeed:
+            currPath = os.path.join(self.game_communication_path,f"AP_SEED_{self.seed_name}.data")
+            with open(currPath, 'w') as f:
+                f.close()
 
         # Set up level shuffle dict file
         if self.slot_data["level_shuffle"] != 0:
@@ -382,6 +381,12 @@ class BabaIsYouContext(CommonContext):
                 locationName = self.location_names.lookup_in_game(ss)
                 f.write(f"{locationName}=1\n")
             f.close()
+
+    def erase_old_files(self):
+        for root, dirs, files in os.walk(self.game_communication_path):
+            for file in files:
+                if file.endswith(".item") or file.endswith(".data") or file.endswith(".tmp") or file.endswith(".sent"):
+                    os.remove(root + "/" + file)
 
 
 async def game_watcher(ctx: BabaIsYouContext):

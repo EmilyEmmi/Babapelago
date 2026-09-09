@@ -2415,18 +2415,146 @@ LEVEL_DATA = {
         "areaAccess": 2,
         "key": "Depths Key",
         "map": True,
-        #"winLogic": Has("Cleaning Service -> Skull") & ((HasAll("Living Lands -> Me", "Is", "Rock") & HasAny("Grass", "Crushers -> Skull")) | Has("Crushers -> Flag")),
-        #"transforms": {
-            #"Rock": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level", "Rock") & (HasAll("Is", "Push") | Has("Crushers -> Skull")),
-            #"Grass": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Living Lands -> Me", "Level", "Grass"),
-        #},
+        "winLogic": Has("Cleaning Service -> Skull") & ((HasAll("Living Lands -> Me", "Is", "Rock") & HasAny("Grass", "Crushers -> Skull")) | Has("Crushers -> Flag")),
+        "transforms": {
+            "Rock": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level", "Rock") & (HasAll("Is", "Push") | Has("Crushers -> Skull")),
+            "Grass": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Living Lands -> Me", "Level", "Grass"),
+        },
         "checkAreaAccess": 3,
-        #"connects": {
-            #"???-5": can_win,
-            #"Depths-1": None,
-            #"Depths-2": Has("Cleaning Service -> Skull"),
-            #"Depths-4": HasAll("Cleaning Service -> Skull", "Is") & (HasAll("Crushers -> Text", "Level") | (advanced_logic_filter & HasAll("Rock", "Crushers -> Skull"))) & (Has("Rock") | (advanced_logic_filter & Has("Crushers -> Skull"))), # transforming crushers is hard
-            #"Depths-Extra 1": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level", "Push") | (Has("Is") & (HasAny("Rock", "Grass") | (hard_logic_filter & Has("Crushers -> Skull")))),
-        #},
+        "connects": {
+            "???-5": can_win,
+            "Depths-1": None,
+            "Depths-2": Has("Cleaning Service -> Skull"),
+            "Depths-4": HasAll("Cleaning Service -> Skull", "Is") & (HasAll("Crushers -> Text", "Level") | (advanced_logic_filter & HasAll("Rock", "Crushers -> Skull"))) & (Has("Rock") | (advanced_logic_filter & Has("Crushers -> Skull"))), # transforming crushers is hard
+            "Depths-Extra 1": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level", "Push") | (Has("Is") & (HasAny("Rock", "Grass") | (advanced_logic_filter & Has("Crushers -> Skull")))),
+            "Depths-Extra 2:": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level") & (Has("Push") | (Has("Rock") & (Has("Is") | (advanced_logic_filter & Has("Crushers -> Skull"))))),
+            "Depths-Extra 3:": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level") & (Has("Rock") | (advanced_logic_filter & Has("Crushers -> Skull"))),
+            "Depths-Extra 4:": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level") & (Has("Rock") | (advanced_logic_filter & Has("Crushers -> Skull"))),
+            "Depths-Extra 5:": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level", "Rock") & (HasAll("Living Lands -> Me", "Grass") | (advanced_logic_filter & Has("Crushers -> Skull"))),
+        },
+    },
+    "Depths-1": {
+        "name": "Cleaning Service",
+        "parent": "Depths",
+        "areaAccess": 3,
+        "winLogic": HasAll("Text", "Is", "Open", "Weak", "Skull"),
+        "winLogicAdv": HasAll("Text", "Is", "Open", "Weak"),
+        "transforms": {
+            "Skull": HasAll("Text", "Is", "Open", "Weak", "Skull"),
+        },
+        "connects": {
+            "Depths": None,
+        },
+    },
+    "Depths-2": {
+        "name": "Exercise Hall",
+        "parent": "Depths",
+        "areaAccess": 3,
+        "winLogic": HasAll("Move", "Is", "Empty", "Level", "Flag"),
+        "winLogicAdv": HasAll("Move", "Empty", "Level", "Flag"),
+        "connects": {
+            "Depths": None,
+            "Depths-3": None,
+        },
+    },
+    "Depths-3": {
+        "name": "Crushers",
+        "parent": "Depths",
+        "areaAccess": 3,
+        "winLogic": HasAll("Belt", "Is", "Shift"),
+        "winLogicAdv": HasAny("Belt", "Is", "Shift"),
+        "transforms": {
+            "Text": HasAll("Belt", "Is", "Shift", "Push", "Text", "Weak"),
+            "Skull": HasAll("Belt", "Is", "Shift", "Push", "Text", "Weak", "Move", "Level", "Stop", "Keke", "You", "Facing"),
+        },
+        "connects": {
+            "Depths-2": None,
+        },
+    },
+    "Depths-4": {
+        "name": "Collaborative Effort",
+        "parent": "Depths",
+        "areaAccess": 3,
+        "winLogic": HasAll("Text", "Is", "Pull", "Skull", "You"), # min logic
+        "connects": {
+            "Depths": None,
+            "Depths-5": None,
+        },
+    },
+    "Depths-5": {
+        "name": "Living Lands",
+        "parent": "Depths",
+        "areaAccess": 3,
+        "winLogic": HasAll("Flag", "Is", "Win", "Wall", "Stop", "Me", "You", "Level"),
+        "winLogicAdv": Has("Flag") | HasAll("Wall", "Is", "Stop"),
+        "transforms": {
+            "Flag": HasAll("Wall", "Is", "Stop") & (Has("Level") | HasAll("Me", "You")),
+            "Wall": HasAll("Wall", "Is", "Stop"),
+        },
+        "connects": {
+            "Depths-4": None,
+        },
+    },
+    "Depths-Extra 1": {
+        "name": "Priority Lane",
+        "parent": "Depths",
+        "areaAccess": 3,
+        "winLogic": HasAll("Belt", "Is", "Shift", "And", "Push", "Box"),
+        "winLogicAdv": HasAll("Belt", "Is", "Shift", "And", "Box"),
+        "connects": {
+            "Depths": None,
+        },
+    },
+    "Depths-Extra 2": {
+        "name": "Parade",
+        "parent": "Depths",
+        "areaAccess": 3,
+        "winLogic": HasAll("Keke", "Me", "Skull", "Is", "Stop", "Baba", "You"),
+        "winLogicAdv": HasAll("Keke", "Me", "Skull", "Is", "Stop"),
+        "connects": {
+            "Depths": None,
+        },
+    },
+    "Depths-Extra 3": {
+        "name": "Hidden Relic",
+        "parent": "Depths",
+        "areaAccess": 3,
+        "winLogic": HasAll("Baba", "Is", "You", "Keke", "Move"), # min logic
+        "connects": {
+            "Depths": None,
+        },
+    },
+    "Depths-Extra 4": {
+        "name": "Buried Treasure",
+        "parent": "Depths",
+        "areaAccess": 3,
+        "winLogic": HasAll("Baba", "Is", "You", "Keke", "Move"), # min logic
+        "connects": {
+            "Depths": None,
+        },
+    },
+    "Depths-Extra 5": {
+        "name": "Endless Corridor",
+        "parent": "Depths",
+        "areaAccess": 3,
+        "winLogic": HasAll("Baba", "Is", "You", "Keke", "Is", "Shift"),
+        "winLogicAdv": Has("Is") & (Has("Shift") | HasAll("Baba", "You")),
+        "connects": {
+            "Depths": None,
+            "Meta": can_win,
+        },
+    },
+    "Meta": {
+        "name": "Meta",
+        "parent": "Depths",
+        "areaAccess": 3,
+        "key": "Meta Key",
+        "map": True,
+        # "winLogic": ...,
+        "checkAreaAccess": 4,
+        "connects": {
+            "Depths": None,
+            # "Meta-1": can_win,
+        },
     },
 }

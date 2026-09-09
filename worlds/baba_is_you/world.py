@@ -181,7 +181,7 @@ class BabaIsYouWorld(World):
             self._restore_ut_slot_data(slot_data)
         
         # Prevent currently unimplemented goals/area accesses from being used (REMOVE WHEN IMPLEMENTED)
-        if self.options.goal >= 3 and self.options.goal <= 4:
+        if self.options.goal == 4:
             raise OptionError(f"Baba Is You ({self.player_name}): Selected goal option has not been implemented yet.")
         elif self.options.area_access > 2:
             raise OptionError(f"Baba Is You ({self.player_name}): Selected area access option has not been implemented yet.")

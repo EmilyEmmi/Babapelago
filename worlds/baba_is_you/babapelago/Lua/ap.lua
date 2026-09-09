@@ -898,7 +898,7 @@ function update_checks()
         goal = (generaldata.strings[CURRLEVEL] == "200level")
     elseif options.goal == 2 then
         goal = (generaldata.strings[CURRLEVEL] == "264level")
-    elseif options.goal == 1 then
+    elseif options.goal == 3 then
         goal = (generaldata.strings[CURRLEVEL] == "283level")
     elseif options.goal == 4 then
         goal = (tonumber(MF_read("save",world .. "_done_single", "total")) == 1)

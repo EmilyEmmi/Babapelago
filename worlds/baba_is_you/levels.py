@@ -962,6 +962,7 @@ LEVEL_DATA = {
             "Fall-6": can_win,
             "Fall-9": can_win,
             "Fall-B": can_win,
+            "Fall-C": can_win,
         },
     },
     "Fall-B": {
@@ -1316,6 +1317,7 @@ LEVEL_DATA = {
         "parent": "Space",
         "winLogic": HasAll("Rock", "Is", "Push", "Ice", "Win"),
         "winLogicAdv": (HasAll("Is", "Rock") & HasAny("Win", "Ice")) | (Has("Empty") & ((Has("Win") & HasAny("Rock", "Is", "Push")) | HasAll("Ice", "Is"))),
+        "defaultWordOnlyDiff": 1,
         "connects": {
             "Space-2": can_win,
             "Space-5": can_win,
@@ -2534,7 +2536,7 @@ LEVEL_DATA = {
         },
     },
     "Depths-Extra 5": {
-        "name": "Endless Corridor",
+        "name": "Endless Corridor", # TODO: Beating this level unlocks Meta early!
         "parent": "Depths",
         "areaAccess": 3,
         "winLogic": HasAll("Baba", "Is", "You", "Keke", "Is", "Shift"),

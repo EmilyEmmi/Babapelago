@@ -94,6 +94,7 @@ if __name__ == "__main__":
     Utils.init_logging("BabaIsYouClient", exception_logger="Client")
 
 from .locations import LOCATION_NAME_TO_ID as baba_loc_name_to_id
+from . import BabaIsYouWorld
 from NetUtils import NetworkItem, ClientStatus
 from CommonClient import gui_enabled, logger, get_base_parser, server_loop
 
@@ -188,6 +189,7 @@ class BabaIsYouContext(CommonContext):
 
         # Find Baba Is You steam installation (dennisw100, modified)
         path = None
+        steam_path = None
         try:
             if Utils.is_windows:
                 import winreg
@@ -214,9 +216,10 @@ class BabaIsYouContext(CommonContext):
         if (path is not None) and os.path.isdir(path):
             logger.info(f"Found steam installation at: {os.path.abspath(path)}")
         else:
-            path = Utils.open_directory("Select Baba Is You directory...")
-            if not path:
-                msg = "No directory was entered!"
+            try:
+                path = BabaIsYouWorld.settings.directory
+            except FileNotFoundError:
+                msg = "Couldn't locate game directory! Try changing the \"directory\" option in \"host.yaml\" under \"baba_is_you.world_options\"."
                 logger.error("Error: " + msg)
                 Utils.messagebox("Error", msg, error=True)
                 sys.exit(1)

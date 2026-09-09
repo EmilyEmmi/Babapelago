@@ -17,7 +17,7 @@ class Goal(Choice):
     end: Reach the normal ending in "A Way Out?".
     flower: Reach the area "???".
     depths: Reach the area "Depths".
-    meta: Reach the area "Meta" (UNIMPLEMENTED).
+    meta: Reach the area "Meta".
     done: Reach the secret ending in "The End" (UNIMPLEMENTED).
     levels: Win a specified amount of levels.
     blossoms: Collect a specified amount of blossoms.
@@ -107,7 +107,7 @@ class AreaAccess(Choice):
     early: The Map and its subworlds will be accessible, but the top gate will be blocked off, preventing access to Slideshow and beyond.
     map: The Map and its subworlds will be fully accessible. ??? will be accessible, but not the levels within.
     flower: Map, ???, and their subworlds will be accessible. Depths will be accessible, but not the levels within.
-    depths: Map, ???, Depths, and their subworlds will be accessible. Meta will be accessible, but not the levels within. (UNIMPLEMENTED)
+    depths: Map, ???, Depths, and their subworlds will be accessible. Meta will be accessible, but not the levels within.
     meta: All areas other than "Center" and its two levels will be accessible. (UNIMPLEMENTED)
     full: All areas will be accessible. (UNIMPLEMENTED)
     """

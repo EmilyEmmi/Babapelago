@@ -52,3 +52,4 @@ To play multiple slots at once, simply open the Baba Is You client multiple time
 ## Using a different installation
 
 Use the /filepath command to select a different Baba Is You installation. I don't think there's any practical purpose for this other than if you made the wrong selection before.
+Note that if you'd like to change your default filepath, you'll have to edit the "directory" option in "host.yaml" under "baba_is_you.world_options".

@@ -40,6 +40,18 @@ UT_SLOT_DATA_OPTION_NAMES = (
 # Max levels in each area access
 AREA_ACCESS_MAX = (160, 165, 195, 206, 229, 231)
 
+# Setting. Singular.
+import settings
+class BabaIsYouSettings(settings.Group):
+    class GameDirectory(settings.UserFolderPath):
+        """
+        Path to the Baba Is You game directory.
+        This file contains either Baba Is You.exe, Baba Is You.app, or run.sh depending on your operating system.
+        """
+        description = "Baba Is You directory"
+
+    directory: GameDirectory = GameDirectory("C:/Program Files (x86)/Steam/steamapps/common/Baba Is You")
+
 # The world class is the heart and soul of an apworld implementation.
 # It holds all the data and functions required to build the world and submit it to the multiworld generator.
 # You could have all your world code in just this one class, but for readability and better structure,
@@ -64,6 +76,9 @@ class BabaIsYouWorld(World):
     options_dataclass = babaisyou_options.BabaIsYouOptions
     options: babaisyou_options.BabaIsYouOptions  # Common mistake: This has to be a colon (:), not an equals sign (=).
     ut_can_gen_without_yaml = True
+
+    # Settings
+    settings: ClassVar[BabaIsYouSettings]
 
     # Our world class must have a static location_name_to_id and item_name_to_id defined.
     # We define these in regions.py and items.py respectively, so we just set them here.
@@ -183,7 +198,7 @@ class BabaIsYouWorld(World):
         # Prevent currently unimplemented goals/area accesses from being used (REMOVE WHEN IMPLEMENTED)
         if self.options.goal == 4:
             raise OptionError(f"Baba Is You ({self.player_name}): Selected goal option has not been implemented yet.")
-        elif self.options.area_access > 2:
+        elif self.options.area_access > 3:
             raise OptionError(f"Baba Is You ({self.player_name}): Selected area access option has not been implemented yet.")
     
         # DEBUG: Print area access and goal

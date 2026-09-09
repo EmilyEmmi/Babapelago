@@ -2422,15 +2422,15 @@ LEVEL_DATA = {
         },
         "checkAreaAccess": 3,
         "connects": {
-            "???-5": can_win,
+            "???-Extra 5": can_win,
             "Depths-1": None,
             "Depths-2": Has("Cleaning Service -> Skull"),
             "Depths-4": HasAll("Cleaning Service -> Skull", "Is") & (HasAll("Crushers -> Text", "Level") | (advanced_logic_filter & HasAll("Rock", "Crushers -> Skull"))) & (Has("Rock") | (advanced_logic_filter & Has("Crushers -> Skull"))), # transforming crushers is hard
             "Depths-Extra 1": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level", "Push") | (Has("Is") & (HasAny("Rock", "Grass") | (advanced_logic_filter & Has("Crushers -> Skull")))),
-            "Depths-Extra 2:": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level") & (Has("Push") | (Has("Rock") & (Has("Is") | (advanced_logic_filter & Has("Crushers -> Skull"))))),
-            "Depths-Extra 3:": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level") & (Has("Rock") | (advanced_logic_filter & Has("Crushers -> Skull"))),
-            "Depths-Extra 4:": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level") & (Has("Rock") | (advanced_logic_filter & Has("Crushers -> Skull"))),
-            "Depths-Extra 5:": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level", "Rock") & (HasAll("Living Lands -> Me", "Grass") | (advanced_logic_filter & Has("Crushers -> Skull"))),
+            "Depths-Extra 2": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level") & (Has("Push") | (Has("Rock") & (Has("Is") | (advanced_logic_filter & Has("Crushers -> Skull"))))),
+            "Depths-Extra 3": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level") & (Has("Rock") | (advanced_logic_filter & Has("Crushers -> Skull"))),
+            "Depths-Extra 4": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level") & (Has("Rock") | (advanced_logic_filter & Has("Crushers -> Skull"))),
+            "Depths-Extra 5": HasAll("Cleaning Service -> Skull", "Crushers -> Text", "Level", "Rock") & (HasAll("Living Lands -> Me", "Grass") | (advanced_logic_filter & Has("Crushers -> Skull"))),
         },
     },
     "Depths-1": {
@@ -2488,7 +2488,7 @@ LEVEL_DATA = {
         "winLogic": HasAll("Flag", "Is", "Win", "Wall", "Stop", "Me", "You", "Level"),
         "winLogicAdv": Has("Flag") | HasAll("Wall", "Is", "Stop"),
         "transforms": {
-            "Flag": HasAll("Wall", "Is", "Stop") & (Has("Level") | HasAll("Me", "You")),
+            "Me": HasAll("Wall", "Is", "Stop") & (Has("Level") | HasAll("Me", "You")),
             "Wall": HasAll("Wall", "Is", "Stop"),
         },
         "connects": {

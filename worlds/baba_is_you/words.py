@@ -41,7 +41,7 @@ FILLER_WORDS = ("Anni", "Best", "Down", "Left", "Hedge", "Cliff", "Line")
 ALL_WORDS = (DEFAULT_WORDS + EARLY_WORDS + TOP_GATE_WORDS + FLOWER_WORDS + DEPTHS_WORDS + META_WORDS + CENTER_WORDS)
 
 # All progression words
-ALL_PROG_WORDS = tuple(set(ALL_WORDS) - set(FILLER_WORDS))
+ALL_PROG_WORDS = tuple(x for x in ALL_WORDS if x not in FILLER_WORDS)
 
 # Function to get the available words given the area access
 def get_active_words(world):

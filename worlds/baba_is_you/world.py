@@ -246,7 +246,7 @@ class BabaIsYouWorld(World):
             if self.options.goal_levels > maxLevels:
                 logger.warning(f"Baba Is You ({self.player_name}): Goal requires {self.options.goal_levels} levels, but only {maxLevels} are accessible. "
                             f"Reducing goal amount...")
-                self.options.goal_levels.value = maxBlossoms
+                self.options.goal_levels.value = maxLevels
     
     # Mark words as early items to make generation fail less often
     def pre_fill(self):

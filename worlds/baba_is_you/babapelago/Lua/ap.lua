@@ -706,6 +706,10 @@ function ap_text_input_ok(data)
                     end
                 end
             end
+        else
+            local worldTotalConverts = tonumber(MF_read("save", world .. "_converts", "total")) or 0
+            MF_store("save", world .. "_converts", "total", tostring(worldTotalConverts + 1))
+            MF_store("save", world .. "_converts", tostring(worldTotalConverts), world .. "_" .. currLevel .. "_" .. "convert")
         end
 
         if not foundLevel then

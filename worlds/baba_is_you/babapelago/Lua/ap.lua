@@ -283,8 +283,8 @@ function addunit(id,undoing_,levelstart_)
 
     local unit = mmf.newObject(id)
     local levelfile = unit.strings[U_LEVELFILE]
-    -- Only run at start (transforms might behave strangely though, keep in mind if we decide to shuffle those)
-    if string.len(levelfile) > 0 and #undobuffer <= 1 then
+    -- Only run at start and if the unit is a level tile
+    if string.len(levelfile) > 0 and unit.className == "level" and #undobuffer <= 1 then
         -- shuffle
         local newFile = level_mapping[levelfile] or levelfile
         if levelfile ~= newFile then

@@ -317,7 +317,7 @@ class BabaIsYouContext(CommonContext):
                         self.duplicate_files[filename] = count
                     filename = filename + ".item"
                     filepath = os.path.join(self.game_communication_path, filename)
-                    with open(filepath, 'w') as f:
+                    with open(filepath, 'w', encoding='utf-8') as f:
                         f.write("[data]\n")
                         f.write(f"item={itemname}\n")
                         f.write(f"player={clean(self.player_names[networkItem.player])}\n")
@@ -335,7 +335,7 @@ class BabaIsYouContext(CommonContext):
     
     def create_options_files(self):  
         currPath = os.path.join(self.game_communication_path,"AP_OPTIONS.data")
-        with open(currPath, 'w') as f:
+        with open(currPath, 'w', encoding='utf-8') as f:
             f.write("[options]\n")
             for option in self.slot_data:
                 if option != "level_shuffle_dict":
@@ -360,13 +360,13 @@ class BabaIsYouContext(CommonContext):
         # Set up seed file (done to prevent getting checks from previous games)
         if not foundSeed:
             currPath = os.path.join(self.game_communication_path,f"AP_SEED_{self.seed_name}.data")
-            with open(currPath, 'w') as f:
+            with open(currPath, 'w', encoding='utf-8') as f:
                 f.close()
 
         # Set up level shuffle dict file
         if self.slot_data["level_shuffle"] != 0:
             currPath = os.path.join(self.game_communication_path,"AP_SHUFFLE.data")
-            with open(currPath, 'w') as f:
+            with open(currPath, 'w', encoding='utf-8') as f:
                 f.write("[general]\n")
                 i = 0
                 for region1 in self.slot_data["level_shuffle_dict"]:
@@ -375,15 +375,6 @@ class BabaIsYouContext(CommonContext):
                     i += 1
                 f.write(f"total={i}")
                 f.close()
-
-        # Set up already checked locations
-        currPath = os.path.join(self.game_communication_path,"AP_CHECKS.data")
-        with open(currPath, 'w') as f:
-            f.write("[checks]\n")
-            for ss in self.checked_locations:
-                locationName = self.location_names.lookup_in_game(ss)
-                f.write(f"{locationName}=1\n")
-            f.close()
 
     def erase_old_files(self):
         for root, dirs, files in os.walk(self.game_communication_path):
@@ -411,7 +402,7 @@ async def game_watcher(ctx: BabaIsYouContext):
             if os.path.isfile(currPath):
                 lines = []
                 try:
-                    with open(currPath, 'r') as f:
+                    with open(currPath, 'r', encoding='utf-8') as f:
                         lines = f.readlines()
                         f.close()
                 except OSError as e:

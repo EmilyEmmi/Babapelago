@@ -142,20 +142,25 @@ end)
 
 -- Handle win checks
 table.insert(mod_hook_functions.level_win_after, function()
-    MF_setfile("level", "AP/save"..(generaldata2.values[SAVESLOT]+1).."/AP_CHECKS.data")
     local levelname = generaldata.strings[LEVELNAME]
+    local levelfile = generaldata2.strings[PREVIOUSLEVEL]
+    store_win_and_bonus_check(levelname, levelfile)
+end)
+
+function store_win_and_bonus_check(levelname, levelfile)
     levelname = capitalize(levelname)
+    MF_setfile("level", "AP/save"..(generaldata2.values[SAVESLOT]+1).."/AP_CHECKS.data")
 
     -- mark win
     MF_store("level","checks",levelname..": Win", "1")
 
     -- mark bonus
-    if tonumber(MF_read("save", generaldata.strings[WORLD] .. "_bonus", generaldata2.strings[PREVIOUSLEVEL])) == 1 then
+    if tonumber(MF_read("save", generaldata.strings[WORLD] .. "_bonus", levelfile)) == 1 then
         MF_store("level","checks",levelname..": Bonus", "1")
     end
 
     MF_setfile("level","Data/Worlds/" .. generaldata.strings[WORLD] .. "/" .. generaldata.strings[CURRLEVEL] .. ".ld")
-end)
+end
 
 -- Hardcoded level tree.
 hardcodetree = {
@@ -568,7 +573,7 @@ table.insert(mod_hook_functions.keyboard_input, function(data)
     if didAPLoad or editor.strings[MENU] ~= "ingame" then return end
 
     local key = data[1]
-    if key == "M" then
+    if key == "M" and not MF_keydown("Control") then
         error_message = ""
         manualChecks = not manualChecks
         if manualChecks then
@@ -595,6 +600,20 @@ table.insert(mod_hook_functions.keyboard_input, function(data)
             add_to_messages("Debug mode enabled")
         else
             add_to_messages("Debug mode disabled")
+        end
+    elseif key == "2" and manualChecks then
+        add_to_messages("Levels have been shuffled")
+        local all_levels = {}
+        local result_levels = {}
+        for mapname, levelfile in pairs(level_name_to_id) do
+            if not (have_clears_or_completes[levelfile] or min_access[levelfile]) then
+                table.insert(all_levels, levelfile)
+                table.insert(result_levels, levelfile)
+            end
+        end
+        for i, levelfile in ipairs(all_levels) do
+            local levelfile2 = table.remove(result_levels, math.random(1, #result_levels))
+            level_mapping[levelfile] = levelfile2
         end
     end
 end)
@@ -712,6 +731,7 @@ namegivingtitles[25] = {"controls_pressany","lower"} -- I have to put some messa
 local checkTimer = 0
 local clear_goal_locations = {}
 local transform_locations = {}
+local pending_win_checks = {}
 function update_checks()
     if generaldata.strings[WORLD] ~= thisWorld or editor.strings[MENU] ~= "ingame" then
         return
@@ -837,6 +857,15 @@ function update_checks()
             prize.scaleY = 0.1
             prize.direction = 1
         end
+    end
+
+    -- send win/bonus checks on load (only send 25 per tick to reduce crash chance)
+    local win_checks_sent = 0
+    while #pending_win_checks ~= 0 do
+        local data = table.remove(pending_win_checks)
+        store_win_and_bonus_check(data[1], data[2])
+        win_checks_sent = win_checks_sent + 1
+        if win_checks_sent >= 25 then break end
     end
 
     -- send clear and complete locations
@@ -1144,9 +1173,19 @@ function load_ap_options()
             options[option] = value
         end
     end
-    if options.level_shuffle ~= 0 then
-        auto_gen_level_name_to_id(level_name_to_id)
+
+    -- set up already obtained win checks
+    pending_win_checks = {}
+    auto_gen_level_name_to_id(level_name_to_id)
+    for mapname, levelfile in pairs(level_name_to_id) do
+        local status = tonumber(MF_read("save", generaldata.strings[WORLD], levelfile)) or 0
+        if status == 3 and not have_clears_or_completes[levelfile] then
+            MF_setfile("level","Data/Worlds/" .. generaldata.strings[WORLD] .. "/" .. levelfile .. ".ld")
+            local levelname = MF_read("level","general","name")
+            table.insert(pending_win_checks, {levelname, levelfile})
+        end
     end
+
     MF_setfile("level","Data/Worlds/" .. generaldata.strings[WORLD] .. "/" .. generaldata.strings[CURRLEVEL] .. ".ld")
 end
 

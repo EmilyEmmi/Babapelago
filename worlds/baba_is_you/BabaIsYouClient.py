@@ -333,7 +333,28 @@ class BabaIsYouContext(CommonContext):
 
         return ui
     
-    def create_options_files(self):  
+    def create_options_files(self):
+        # Replace existing seed file
+        foundSeed = False
+        foundCorrectSeed = False
+        for root, dirs, files in os.walk(self.game_communication_path):
+            for file in files:
+                if file.startswith("AP_SEED_") and file.endswith(".data"):
+                    seed = file[8:-5]
+                    foundSeed = True
+                    foundCorrectSeed = (seed == str(self.seed_name))
+                    break
+            if foundSeed:
+                break
+
+        # Set up seed file (done to prevent getting checks from previous games)
+        if not foundCorrectSeed:
+            self.erase_old_files() # Erase old files if we didn't find the correct seed
+            currPath = os.path.join(self.game_communication_path,f"AP_SEED_{self.seed_name}.data")
+            with open(currPath, 'w', encoding='utf-8') as f:
+                f.close()
+
+        # Create options file
         currPath = os.path.join(self.game_communication_path,"AP_OPTIONS.data")
         with open(currPath, 'w', encoding='utf-8') as f:
             f.write("[options]\n")
@@ -342,26 +363,6 @@ class BabaIsYouContext(CommonContext):
                     f.write(f"{option}={self.slot_data[option]}\n")
             f.write(f"seed={str(self.seed_name)}")
             f.close()
-
-        # Replace existing seed file
-        foundSeed = False
-        for root, dirs, files in os.walk(self.game_communication_path):
-            for file in files:
-                if file.startswith("AP_SEED_") and file.endswith(".data"):
-                    seed = file[8:-5]
-                    if seed != str(self.seed_name):
-                        os.remove(root + "/" + file)
-                        self.erase_old_files()
-                    foundSeed = True
-                    break
-            if foundSeed:
-                break
-
-        # Set up seed file (done to prevent getting checks from previous games)
-        if not foundSeed:
-            currPath = os.path.join(self.game_communication_path,f"AP_SEED_{self.seed_name}.data")
-            with open(currPath, 'w', encoding='utf-8') as f:
-                f.close()
 
         # Set up level shuffle dict file
         if self.slot_data["level_shuffle"] != 0:

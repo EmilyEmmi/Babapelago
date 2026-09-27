@@ -778,6 +778,7 @@ function update_checks()
             end
         else
             error_message = ("Game seed does not match AP seed. Please relaunch Baba Is You.")
+            --error_message = (trueSeed .. " != " .. ourSeed)
         end
         didAPLoad = false
         return

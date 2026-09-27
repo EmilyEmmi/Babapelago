@@ -2395,7 +2395,7 @@ LEVEL_DATA = {
         "parent": "ABC",
         "areaAccess": 2,
         "winLogic": HasAll("Belt", "Is", "Melt", "Flag", "G", "R", "A", "S", "H", "O", "T"),
-        "winLogicAdv": HasAll("Is", "Flag", "S") & (HasAll("A", "O", "H") | Has("T")) & (HasAll("A") | HasAll("R", "G", "T")) & (Has("Belt") | HasAll("S", "T", "A", "R", "G", "H", "O")),
+        "winLogicAdv": ((HasAll("Belt", "Is", "Flag", "G", "S", "H", "O", "T") & HasAny("A", "R")) | (hard_logic_filter & HasAll("Is", "Flag", "S") & (HasAll("A", "O", "H") | Has("T")) & (Has("A") | HasAll("R", "G", "T")) & (Has("Belt") | HasAll("S", "T", "A", "R", "G", "H", "O")))),
         "connects": {
             "ABC-4": can_win,
             "ABC-Extra 1": can_win,
@@ -2443,7 +2443,10 @@ LEVEL_DATA = {
         "winLogicAdv": HasAll("Text", "Is", "Open", "Weak"),
         "transforms": {
             "Skull": HasAll("Text", "Is", "Open", "Weak", "Skull"),
+            "Door": HasAll("Text", "Is", "Open", "Weak", "Skull") & HasAny("Door", "Level"),
+            "Baba": HasAll("Text", "Is", "Open", "Weak", "Skull", "Level"),
         },
+        "transformLogicEasy": HasAll("Text", "Is", "Open", "Weak", "Skull", "Level", "Door"),
         "connects": {
             "Depths": None,
         },

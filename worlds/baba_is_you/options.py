@@ -57,7 +57,7 @@ class GoalBlossoms(Range):
 
     display_name = "Goal Blossoms"
     range_start = 0
-    range_end = 12
+    range_end = 100
     default = 7
 
 class LogicDifficulty(Choice):
@@ -157,7 +157,7 @@ class BlossomPetals(Range):
 
     display_name = "Blossom Petals"
     range_start = 0
-    range_end = 96
+    range_end = 200
     default = 0
 
 class Blossoms(Range):
@@ -167,7 +167,7 @@ class Blossoms(Range):
 
     display_name = "Blossoms"
     range_start = 0
-    range_end = 12
+    range_end = 100
     default = 10
 
 class FirstGateBlossoms(Range):
@@ -178,7 +178,7 @@ class FirstGateBlossoms(Range):
 
     display_name = "First Gate Blossoms"
     range_start = 0
-    range_end = 12
+    range_end = 100
     default = 3
 
 class SecondGateBlossoms(Range):
@@ -189,7 +189,7 @@ class SecondGateBlossoms(Range):
 
     display_name = "Second Gate Blossoms"
     range_start = 0
-    range_end = 12
+    range_end = 100
     default = 5
 
 class ThirdGateBlossoms(Range):
@@ -201,7 +201,7 @@ class ThirdGateBlossoms(Range):
 
     display_name = "Third Gate Blossoms"
     range_start = 0
-    range_end = 12
+    range_end = 100
     default = 7
 
 class ForceClearBlossoms(Toggle):

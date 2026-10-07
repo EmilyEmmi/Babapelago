@@ -2470,7 +2470,11 @@ LEVEL_DATA = {
         "winLogicAdv": HasAny("Belt", "Is", "Shift"),
         "transforms": {
             "Text": HasAll("Belt", "Is", "Shift", "Push", "Text", "Weak"),
+            "Belt": HasAll("Belt", "Is", "Shift", "Push", "Text", "Weak"),
             "Skull": HasAll("Belt", "Is", "Shift", "Push", "Text", "Weak", "Move", "Level", "Stop", "Keke", "You", "Facing"),
+            "Flag": HasAll("Belt", "Is", "Shift", "Push", "Text", "Weak", "Move", "Level", "Stop", "Keke", "You", "Facing"),
+            "Keke": HasAll("Belt", "Is", "Shift", "Push", "Text", "Weak", "Move", "Level", "Stop", "Keke", "You", "Facing"),
+            "Wall": HasAll("Belt", "Is", "Shift", "Push", "Text", "Weak", "Move", "Level", "Stop", "Keke", "You", "Facing"),
         },
         "connects": {
             "Depths-2": None,
@@ -2539,7 +2543,7 @@ LEVEL_DATA = {
         },
     },
     "Depths-Extra 5": {
-        "name": "Endless Corridor", # TODO: Beating this level unlocks Meta early!
+        "name": "Endless Corridor",
         "parent": "Depths",
         "areaAccess": 3,
         "winLogic": HasAll("Baba", "Is", "You", "Keke", "Is", "Shift"),

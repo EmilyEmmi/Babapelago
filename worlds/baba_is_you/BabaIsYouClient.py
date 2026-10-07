@@ -219,6 +219,9 @@ class BabaIsYouContext(CommonContext):
             try:
                 path = BabaIsYouWorld.settings.directory
             except FileNotFoundError:
+                path = None
+            
+            if path is None:
                 msg = "Couldn't locate game directory! Try changing the \"directory\" option in \"host.yaml\" under \"baba_is_you.world_options\"."
                 logger.error("Error: " + msg)
                 Utils.messagebox("Error", msg, error=True)
@@ -259,7 +262,7 @@ class BabaIsYouContext(CommonContext):
         self.is_connected = False
         self.duplicate_files = {}
         await super(BabaIsYouContext, self).connection_closed()
-        self.erase_old_files()
+        self.erase_old_files(True)
 
     @property
     def endpoints(self):
@@ -272,7 +275,7 @@ class BabaIsYouContext(CommonContext):
         self.is_connected = False
         self.duplicate_files = {}
         await super(BabaIsYouContext, self).shutdown()
-        self.erase_old_files()
+        self.erase_old_files(True)
 
     def on_package(self, cmd: str, args: dict):
         # Relay packages to the tracker
@@ -306,12 +309,10 @@ class BabaIsYouContext(CommonContext):
                     # This is why it is necessary to create a new file for every individual item, even for multiple counts, such as Blossoms.
                     filename = f"AP_{str(networkItem.location)}_PLR{str(networkItem.player)}_ITM{str(networkItem.item)}"
                     if itemname in MULTI_ITEMS:
-                        count = 0
-                        if self.duplicate_files.get(filename):
-                            count = self.duplicate_files[filename]
+                        count = self.duplicate_files.get(filename, 0)
                         count += 1
 
-                        # Make duplicates of this file (only really relative for the cheat console)
+                        # Make duplicates of this file (only really relevant for the cheat console)
                         if count > 1:
                             filename = f"{filename}_{count}"
                         self.duplicate_files[filename] = count
@@ -354,33 +355,36 @@ class BabaIsYouContext(CommonContext):
             with open(currPath, 'w', encoding='utf-8') as f:
                 f.close()
 
-        # Create options file
-        currPath = os.path.join(self.game_communication_path,"AP_OPTIONS.data")
-        with open(currPath, 'w', encoding='utf-8') as f:
-            f.write("[options]\n")
-            for option in self.slot_data:
-                if option != "level_shuffle_dict":
-                    f.write(f"{option}={self.slot_data[option]}\n")
-            f.write(f"seed={str(self.seed_name)}")
-            f.close()
-
-        # Set up level shuffle dict file
-        if self.slot_data["level_shuffle"] != 0:
-            currPath = os.path.join(self.game_communication_path,"AP_SHUFFLE.data")
+            # Create options file
+            currPath = os.path.join(self.game_communication_path,"AP_OPTIONS.data")
             with open(currPath, 'w', encoding='utf-8') as f:
-                f.write("[general]\n")
-                i = 0
-                for region1 in self.slot_data["level_shuffle_dict"]:
-                    region2 = self.slot_data["level_shuffle_dict"][region1]
-                    f.write(f"{i}={region1}@{region2}\n")
-                    i += 1
-                f.write(f"total={i}")
+                f.write("[options]\n")
+                for option in self.slot_data:
+                    if option != "level_shuffle_dict":
+                        f.write(f"{option}={self.slot_data[option]}\n")
+                f.write(f"seed={str(self.seed_name)}")
                 f.close()
 
-    def erase_old_files(self):
+            # Set up level shuffle dict file
+            if self.slot_data["level_shuffle"] != 0:
+                currPath = os.path.join(self.game_communication_path,"AP_SHUFFLE.data")
+                with open(currPath, 'w', encoding='utf-8') as f:
+                    f.write("[general]\n")
+                    i = 0
+                    for region1 in self.slot_data["level_shuffle_dict"]:
+                        region2 = self.slot_data["level_shuffle_dict"][region1]
+                        f.write(f"{i}={region1}@{region2}\n")
+                        i += 1
+                    f.write(f"total={i}")
+                    f.close()
+
+    def erase_old_files(self, seedOnly = False):
         for root, dirs, files in os.walk(self.game_communication_path):
             for file in files:
-                if file.endswith(".item") or file.endswith(".data") or file.endswith(".tmp") or file.endswith(".sent"):
+                if seedOnly:
+                    if file.startswith("AP_SEED_") and (file.endswith(".data") or file.endswith(".tmp")):
+                        os.remove(root + "/" + file)
+                elif file.endswith(".item") or file.endswith(".data") or file.endswith(".tmp") or file.endswith(".sent"):
                     os.remove(root + "/" + file)
 
 

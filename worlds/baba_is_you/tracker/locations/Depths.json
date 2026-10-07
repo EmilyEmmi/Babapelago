@@ -1,1 +1,274 @@
-[]
+[
+    {
+        "name": "Depths",
+        "children": [
+            {
+                "name": "Depths",
+                "short_name": "Depths",
+                "map_locations": [
+                    {
+                        "map": "Depths",
+                        "x": 48,
+                        "y": 48
+                    }
+                ],
+                "sections": [
+                    {
+                        "name": "Win",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Rock Transform",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Grass Transform",
+                        "item_count": 1
+                    }
+                ]
+            },
+            {
+                "name": "Depths-1",
+                "short_name": "Depths-1",
+                "map_locations": [
+                    {
+                        "map": "Depths",
+                        "x": 1200,
+                        "y": 720
+                    }
+                ],
+                "sections": [
+                    {
+                        "name": "Win",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Skull Transform",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Door Transform",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Baba Transform",
+                        "item_count": 1
+                    }
+                ]
+            },
+            {
+                "name": "Depths-2",
+                "short_name": "Depths-2",
+                "map_locations": [
+                    {
+                        "map": "Depths",
+                        "x": 1872,
+                        "y": 1200
+                    }
+                ],
+                "sections": [
+                    {
+                        "name": "Win",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Bonus",
+                        "item_count": 1
+                    }
+                ]
+            },
+            {
+                "name": "Depths-3",
+                "short_name": "Depths-3",
+                "map_locations": [
+                    {
+                        "map": "Depths",
+                        "x": 1584,
+                        "y": 1200
+                    }
+                ],
+                "sections": [
+                    {
+                        "name": "Win",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Skull Transform",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Text Transform",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Flag Transform",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Keke Transform",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Wall Transform",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Belt Transform",
+                        "item_count": 1
+                    }
+                ]
+            },
+            {
+                "name": "Depths-4",
+                "short_name": "Depths-4",
+                "map_locations": [
+                    {
+                        "map": "Depths",
+                        "x": 816,
+                        "y": 1200
+                    }
+                ],
+                "sections": [
+                    {
+                        "name": "Win",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Bonus",
+                        "item_count": 1
+                    }
+                ]
+            },
+            {
+                "name": "Depths-5",
+                "short_name": "Depths-5",
+                "map_locations": [
+                    {
+                        "map": "Depths",
+                        "x": 912,
+                        "y": 1104
+                    }
+                ],
+                "sections": [
+                    {
+                        "name": "Win",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Me Transform",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Wall Transform",
+                        "item_count": 1
+                    }
+                ]
+            },
+            {
+                "name": "Depths-Extra 1",
+                "short_name": "Depths-Extra 1",
+                "map_locations": [
+                    {
+                        "map": "Depths",
+                        "x": 720,
+                        "y": 624
+                    }
+                ],
+                "sections": [
+                    {
+                        "name": "Win",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Bonus",
+                        "item_count": 1
+                    }
+                ]
+            },
+            {
+                "name": "Depths-Extra 2",
+                "short_name": "Depths-Extra 2",
+                "map_locations": [
+                    {
+                        "map": "Depths",
+                        "x": 1104,
+                        "y": 912
+                    }
+                ],
+                "sections": [
+                    {
+                        "name": "Win",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Bonus",
+                        "item_count": 1
+                    }
+                ]
+            },
+            {
+                "name": "Depths-Extra 3",
+                "short_name": "Depths-Extra 3",
+                "map_locations": [
+                    {
+                        "map": "Depths",
+                        "x": 1776,
+                        "y": 336
+                    }
+                ],
+                "sections": [
+                    {
+                        "name": "Win",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Bonus",
+                        "item_count": 1
+                    }
+                ]
+            },
+            {
+                "name": "Depths-Extra 4",
+                "short_name": "Depths-Extra 4",
+                "map_locations": [
+                    {
+                        "map": "Depths",
+                        "x": 2256,
+                        "y": 816
+                    }
+                ],
+                "sections": [
+                    {
+                        "name": "Win",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Bonus",
+                        "item_count": 1
+                    }
+                ]
+            },
+            {
+                "name": "Depths-Extra 5",
+                "short_name": "Depths-Extra 5",
+                "map_locations": [
+                    {
+                        "map": "Depths",
+                        "x": 2736,
+                        "y": 912
+                    }
+                ],
+                "sections": [
+                    {
+                        "name": "Win",
+                        "item_count": 1
+                    },
+                    {
+                        "name": "Bonus",
+                        "item_count": 1
+                    }
+                ]
+            }
+        ]
+    }
+]

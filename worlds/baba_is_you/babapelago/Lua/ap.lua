@@ -69,6 +69,11 @@ local have_clears_or_completes = {
     ["179level"] = 3,
     ["232level"] = 3,
     ["282level"] = 3,
+    -- ["106level"] = 2, -- Map
+    -- ["200level"] = 2, -- ???
+    -- ["264level"] = 2, -- Depths
+    -- ["283level"] = 2, -- Meta
+    -- ["304level"] = 3, -- Center
 }
 local min_access = {
     ["106level"] = 0, -- Map
@@ -732,6 +737,7 @@ function open_text_input(startingText)
 end
 namegivingtitles[25] = {"controls_pressany","lower"} -- I have to put some message here, so I guess this works
 
+local prevFiles = {}
 local checkTimer = 0
 local clear_goal_locations = {}
 local transform_locations = {}
@@ -801,76 +807,90 @@ function update_checks()
     
     local world = generaldata.strings[WORLD]
     local currLevel = generaldata.strings[CURRLEVEL]
-
-    local prev_blossom_count = tonumber(MF_read("save",world .. "_clears","total")) or 0
-    local blossom_count = 0
-    blossom_petal_count = 0
-    local bonus_count = 0
-
     files = MF_filelist("AP/save"..(generaldata2.values[SAVESLOT]+1).."/", "*.item")
-    local prevChecks = checks
-    checks = {}
-    obtained_keys = {}
+
+    -- First, see if we even have any new files
+    local doFileParse = false
     for i, file in ipairs(files) do
-        MF_setfile("level", "AP/save"..(generaldata2.values[SAVESLOT]+1).."/"..file)
-        local item = MF_read("level", "data", "item")
-        if item and #item ~= 0 then
-            local trueName = item
-            if not non_word_items[item] then
-                trueName = "text_" .. item:lower()
-            end
+        if not prevFiles[file] then
+            doFileParse = true
+            break
+        end
+    end
 
-            if item == "Blossom" then
-                blossom_count = blossom_count + 1
-            elseif item == "Blossom Petal" then
-                blossom_petal_count = blossom_petal_count + 1
-            elseif item == "Bonus Orb" then
-                bonus_count = bonus_count + 1
-            end
+    -- If we do, parse those files
+    if doFileParse then
+        local prev_blossom_count = tonumber(MF_read("save",world .. "_clears","total")) or 0
+        local blossom_count = prev_blossom_count
+        local prev_bonus_count = tonumber(MF_read("save",world .. "_bonus","total")) or 0
+        local bonus_count = prev_bonus_count
+        local prevChecks = checks
+        checks = {}
+        obtained_keys = {}
+        blossom_count, blossom_petal_count, bonus_count = 0, 0, 0
 
-            if not checks[trueName] then
-                checks[trueName] = 0
-            end
-            checks[trueName] = checks[trueName] + 1
+        for i, file in ipairs(files) do
+            MF_setfile("level", "AP/save"..(generaldata2.values[SAVESLOT]+1).."/"..file)
+            local item = MF_read("level", "data", "item")
+            if item and #item ~= 0 then
+                local trueName = item
+                if not non_word_items[item] then
+                    trueName = "text_" .. item:lower()
+                end
 
-            if didAPLoad and (prevChecks[trueName] == nil or prevChecks[trueName] < checks[trueName]) then
-                local player = MF_read("level", "data", "player") or "Unknown"
-                local location = MF_read("level", "data", "location") or "Unknown"
-                add_to_messages(string.format("Received \"%s\" from %s (%s)", item, player, location))
+                if item == "Blossom" then
+                    blossom_count = blossom_count + 1
+                elseif item == "Blossom Petal" then
+                    blossom_petal_count = blossom_petal_count + 1
+                elseif item == "Bonus Orb" then
+                    bonus_count = bonus_count + 1
+                end
+
+                if not checks[trueName] then
+                    checks[trueName] = 0
+                end
+                checks[trueName] = checks[trueName] + 1
+
+                if didAPLoad and (prevChecks[trueName] == nil or prevFiles[file] == nil) then
+                    local player = MF_read("level", "data", "player") or "Unknown"
+                    local location = MF_read("level", "data", "location") or "Unknown"
+                    add_to_messages(string.format("Received \"%s\" from %s (%s)", item, player, location))
+                end
+            end
+            prevFiles[file] = 1
+        end
+
+         blossom_count = blossom_count + blossom_petal_count // 8
+        if prev_blossom_count ~= blossom_count then MF_store("save",world .. "_clears","total",blossom_count) end
+        if prev_bonus_count ~= bonus_count then MF_store("save",world .. "_bonus","total",bonus_count) end
+        
+        -- Create blossom when received
+        if prev_blossom_count < blossom_count then
+            local cursors = getunitswitheffect("select",true)
+            if #cursors ~= 0 then
+                local x, y = cursors[1].values[XPOS], cursors[1].values[YPOS]
+                y = y - 1
+                local prizeid = MF_specialcreate("Prize")
+                local prize = mmf.newObject(prizeid)
+                prize.layer = 2
+                prize.values[ONLINE] = 1
+                prize.values[XPOS] = Xoffset + x * tilesize + tilesize * 0.5
+                prize.values[YPOS] = Yoffset + y * tilesize + tilesize * 0.5
+                prize.values[YVEL] = 0
+                prize.scaleX = 0.1
+                prize.scaleY = 0.1
+                prize.direction = 1
             end
         end
     end
 
-    blossom_count = blossom_count + blossom_petal_count // 8
-    MF_store("save",world .. "_clears","total",blossom_count)
-    MF_store("save",world .. "_bonus","total",bonus_count)
-    
-    -- Create blossom when received
-    if prev_blossom_count < blossom_count then
-        local cursors = getunitswitheffect("select",true)
-        if #cursors ~= 0 then
-            local x, y = cursors[1].values[XPOS], cursors[1].values[YPOS]
-            y = y - 1
-            local prizeid = MF_specialcreate("Prize")
-		    local prize = mmf.newObject(prizeid)
-            prize.layer = 2
-            prize.values[ONLINE] = 1
-            prize.values[XPOS] = Xoffset + x * tilesize + tilesize * 0.5
-            prize.values[YPOS] = Yoffset + y * tilesize + tilesize * 0.5
-            prize.values[YVEL] = 0
-            prize.scaleX = 0.1
-            prize.scaleY = 0.1
-            prize.direction = 1
-        end
-    end
-
-    -- send win/bonus checks on load (only send 25 per tick to reduce crash chance)
+    -- send win/bonus checks on load (only send 5 per second to reduce crash chance)
     local win_checks_sent = 0
     while #pending_win_checks ~= 0 do
         local data = table.remove(pending_win_checks)
         store_win_and_bonus_check(data[1], data[2])
         win_checks_sent = win_checks_sent + 1
-        if win_checks_sent >= 25 then break end
+        if win_checks_sent >= 5 then break end
     end
 
     -- send clear and complete locations
@@ -963,6 +983,12 @@ function update_checks()
 end
 
 table.insert(mod_hook_functions.always, update_checks)
+
+--[[local orig_MF_store = MF_store
+function MF_store(...)
+    print(...)
+    orig_MF_store(...)
+end]]
 
 function display_messages()
     local id = "ap_messages"

@@ -626,6 +626,143 @@
             "item_count": 1
           }
         ]
+      },
+      {
+        "name": "Depths",
+        "short_name": "Depths",
+        "map_locations": [
+          {
+            "map": "???",
+            "x": 1872,
+            "y": 1008
+          }
+        ],
+        "sections": [
+          {
+            "name": "Depths-1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-1: Skull Transform",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-1: Door Transform",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-1: Baba Transform",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-3: Skull Transform",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-3: Text Transform",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-3: Flag Transform",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-3: Keke Transform",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-3: Wall Transform",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-3: Belt Transform",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-5: Me Transform",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-5: Wall Transform",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-Extra 1: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-Extra 1: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-Extra 2: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-Extra 2: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-Extra 3: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-Extra 3: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-Extra 4: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-Extra 4: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-Extra 5: Win",
+            "item_count": 1
+          },
+          {
+            "name": "Depths-Extra 5: Bonus",
+            "item_count": 1
+          },
+          {
+            "name": "Win",
+            "item_count": 1
+          },
+          {
+            "name": "Rock Transform",
+            "item_count": 1
+          },
+          {
+            "name": "Grass Transform",
+            "item_count": 1
+          }
+        ]
       }
     ]
   }

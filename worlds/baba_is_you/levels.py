@@ -1154,7 +1154,7 @@ LEVEL_DATA = {
         "name": "Lovely House",
         "parent": "Forest",
         "winLogic": HasAll("Baba", "Is", "You", "Key", "And", "Rock", "Push"),
-        "winLogicAdv": Has("Is") & ((HasAll("Baba", "You") & HasAny("Rock", "Key")) | HasAll("Rock", "And", "Key")),
+        "winLogicAdv": Has("Is") & ((HasAll("Baba", "You") & HasAny("Rock", "Key", "Push")) | HasAll("Rock", "And", "Key")),
         "defaultWordOnlyDiff": 1,
         "connects": {
             "Forest-4": can_win,
@@ -1239,7 +1239,7 @@ LEVEL_DATA = {
         "name": "Not Quite",
         "parent": "Forest",
         "winLogic": HasAll("Baba", "Is", "You", "Flag", "Win", "Swap"),
-        "winLogicAdv": HasAny("Flag", "Win"),
+        "winLogicAdv": HasAny("Flag", "Win") | HasAll("Baba", "Is", "You"),
         "defaultWordOnlyDiff": 1,
         "connects": {
             "Forest-A": can_win,

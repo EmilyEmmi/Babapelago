@@ -1982,7 +1982,7 @@ LEVEL_DATA = {
         "name": "Solitude",
         "parent": "Mountain",
         "winLogic": HasAll("Rock", "Is", "Push", "Lonely", "Key", "Open"),
-        "winLogicAdv": HasAll("Rock", "Is", "Push", "Lonely", "Key"),
+        "winLogicAdv": HasAll("Rock", "Is", "Push", "Lonely") & HasAny("Key", "Open"),
         "connects": {
             "Mountain-1": can_win,
             "Mountain-4": can_win,

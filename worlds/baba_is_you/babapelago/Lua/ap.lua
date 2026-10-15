@@ -742,6 +742,7 @@ local checkTimer = 0
 local clear_goal_locations = {}
 local transform_locations = {}
 local pending_win_checks = {}
+blossom_count = 0
 function update_checks()
     if generaldata.strings[WORLD] ~= thisWorld or editor.strings[MENU] ~= "ingame" then
         return
@@ -821,7 +822,7 @@ function update_checks()
     -- If we do, parse those files
     if doFileParse then
         local prev_blossom_count = tonumber(MF_read("save",world .. "_clears","total")) or 0
-        local blossom_count = prev_blossom_count
+        blossom_count = prev_blossom_count
         local prev_bonus_count = tonumber(MF_read("save",world .. "_bonus","total")) or 0
         local bonus_count = prev_bonus_count
         local prevChecks = checks
@@ -860,7 +861,7 @@ function update_checks()
             prevFiles[file] = 1
         end
 
-         blossom_count = blossom_count + blossom_petal_count // 8
+        blossom_count = blossom_count + blossom_petal_count // 8
         if prev_blossom_count ~= blossom_count then MF_store("save",world .. "_clears","total",blossom_count) end
         if prev_bonus_count ~= bonus_count then MF_store("save",world .. "_bonus","total",bonus_count) end
         

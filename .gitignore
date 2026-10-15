@@ -217,3 +217,5 @@ hooks/profile.py
 hooks/with_empty.py
 /fuzz_output
 fuzz_meta.yaml
+/worlds/vividlope
+worlds/baba_is_you/babapelago.zip
